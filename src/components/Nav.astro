@@ -1,0 +1,98 @@
+---
+---
+
+<div class="nav">
+  <h1>Jeremy Wood</h1>
+  <span class="nav-links">
+    <a>About Me</a>
+    <a>Projects</a>
+    <a>Contact</a>
+    <a>Resume</a>
+  </span>
+  <div class="animation-container">
+    <hr class="animated-1" />
+    <hr class="animated-2" />
+    <hr class="animated-3" />
+  </div>
+</div>
+<!-- <hr class="animated-1" />
+<hr class="animated-2" />
+<hr class="animated-3" /> -->
+<style>
+  * {
+    color: white;
+  }
+  .nav {
+    display: grid;
+    grid-template: auto auto / auto 1fr;
+    gap: 10px;
+    padding-top: 1em;
+  }
+
+  .nav h1 {
+    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template: auto / 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+  }
+
+  hr {
+    border-radius: 0 0 0 5px;
+    border: none;
+    right: 0;
+    position: absolute;
+  }
+
+  hr.animated-1 {
+    height: 1.1em;
+    animation: expand-3 2s ease-in-out 0.4s forwards;
+    background-color: rgb(0, 236, 181);
+  }
+
+  hr.animated-2 {
+    height: 0.8em;
+    animation: expand-2 2s ease-in-out 0.2s forwards;
+    background-color: rgb(169, 87, 241);
+  }
+
+  hr.animated-3 {
+    height: 0.5em;
+    animation: expand-1 2s ease-in-out forwards;
+    background-color: rgb(16, 0, 236);
+  }
+
+  @keyframes expand-1 {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 87%;
+    }
+  }
+
+  @keyframes expand-2 {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 84%;
+    }
+  }
+
+  @keyframes expand-3 {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 81%;
+    }
+  }
+</style>
