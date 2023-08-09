@@ -3,9 +3,7 @@ import headshot from "../images/bust.png";
 ---
 
 <div class="hero-component">
-  <!-- <div class="animate"> -->
   <img class="hero-image" src={headshot} />
-  <!-- </div> -->
 </div>
 <style>
   .hero-component {
@@ -15,38 +13,27 @@ import headshot from "../images/bust.png";
     align-items: center;
     padding: 20px;
     height: calc(100vh - 4em);
-    border: 2px solid red;
+    overflow-x: hidden;
   }
-
-  /* div.animate {
-    max-width: 75%;
-    max-height: 70%;
-    animation: rollin 3s ease-in forward;
-    position: absolute; 
-  } */
 
   .hero-image {
     max-width: 75%;
     max-height: 70%;
     border: 0.5em solid rgb(16, 0, 236);
     border-radius: 50%;
-    /* animation-name: rollin;
-    animation-duration: 2s;
-    animation-fill-mode: forwards; */
-    position: absolute;
-    transition: left 2s;
-    left: 0;
-    transform: translate(-50%, 0);
-
-    /* animation: 2s ea`se-in forward; */
+    transform: translateX(200%) rotate(180deg);
+    animation: rollin 3s forwards 1s;
   }
 
-  /* @keyframes rollin {
+  @keyframes rollin {
     0% {
-      align-self: flex-start;
+      transform: translateX(200%) rotate(180deg);
+    }
+    50% {
+      transform: rotate(360deg);
     }
     100% {
-      align-self: flex-end;
+      transform: translateX(0);
     }
-  } */
+  }
 </style>

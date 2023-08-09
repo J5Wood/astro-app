@@ -1,5 +1,49 @@
 ---
 ---
 
-<div>AboutMe</div>
-<style></style>
+<div class="about-me-container">
+  <h2 class="about-me-heading">About Me</h2>
+  <p class="about-me-content">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus
+    bibendum eros, quis iaculis orci tristique condimentum. Nullam vel dui ut
+    ipsum rutrum ullamcorper. Aenean accumsan, sem nec fringilla lobortis, sem
+    nisi aliquet libero, id eleifend turpis lorem ac erat. Praesent pretium
+    efficitur magna vestibulum auctor.
+  </p>
+</div>
+<style>
+  .about-me-container {
+    height: 100vh;
+    border: 1px solid red;
+    display: grid;
+    grid-template: 12% 4em 1fr / 25% 1fr;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-me-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: flex-start;
+    padding-left: 20%;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    width: 100%;
+    height: 5em;
+    border-radius: 4em 0em 0em 4em;
+    background-color: rgb(16, 0, 236);
+  }
+
+  .about-me-content {
+    margin: 0 4em 0 4em;
+    padding: 4em;
+    grid-row-start: 3;
+    grid-column: 1/ 3;
+    border-style: solid;
+    border-width: 0.8em;
+    border-color: rgb(169, 87, 241, 0.7);
+    border-radius: 10%;
+  }
+</style>
