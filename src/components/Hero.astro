@@ -22,7 +22,8 @@ import headshot from "../images/bust.png";
     border: 0.5em solid rgb(16, 0, 236);
     border-radius: 50%;
     transform: translateX(200%) rotate(180deg);
-    animation: rollin 3s forwards 1s;
+    animation: rollin 3s forwards 0.8s;
+    visibility: hidden;
   }
 
   @keyframes rollin {
@@ -34,6 +35,7 @@ import headshot from "../images/bust.png";
     }
     100% {
       transform: translateX(0);
+      visibility: visible;
     }
   }
 </style>
