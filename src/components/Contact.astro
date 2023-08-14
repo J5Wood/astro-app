@@ -1,5 +1,28 @@
 ---
+import ContactCard from "./ContactCard.astro";
 ---
 
-<div>Contact</div>
-<style></style>
+<div class="contacts-container">
+  <h2 class="contact-header">Contact Me</h2>
+  <ContactCard />
+  <ContactCard />
+  <ContactCard />
+  <ContactCard />
+</div>
+<style>
+  .contacts-container {
+    height: 100vh;
+    display: grid;
+    grid-template: 20% 80%/ 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .contact-header {
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
