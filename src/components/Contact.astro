@@ -4,25 +4,76 @@ import ContactCard from "./ContactCard.astro";
 
 <div class="contacts-container">
   <h2 class="contact-header">Contact Me</h2>
-  <ContactCard />
-  <ContactCard />
-  <ContactCard />
-  <ContactCard />
+  <div class="contact-card-wrapper"><ContactCard /></div>
+  <div class="contact-card-wrapper"><ContactCard /></div>
+  <div class="contact-card-wrapper"><ContactCard /></div>
+  <div class="contact-card-wrapper"><ContactCard /></div>
 </div>
 <style>
   .contacts-container {
     height: 100vh;
+    margin-top: 20vh;
     display: grid;
-    grid-template: 20% 80%/ 1fr 1fr 1fr 1fr;
+    grid-template: 20% 60%/ 1fr 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
   }
-
   .contact-header {
     grid-column: 1 / 5;
     grid-row: 1 / 2;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: rotateY(180deg);
+    transition: all 1s ease-in;
+    backface-visibility: hidden;
+  }
+
+  .contact-card-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    transition: all 1.2s ease-out;
+    backface-visibility: hidden;
+  }
+
+  .pop-in {
+    transform: rotateY(0deg);
+  }
+  .pop-first {
+    transition-delay: 0.2s;
+  }
+  .pop-second {
+    transition-delay: 0.4s;
+  }
+  .pop-third {
+    transition-delay: 0.6s;
+  }
+  .pop-fourth {
+    transition-delay: 0.8s;
+
   }
 </style>
+<script>
+  window.addEventListener("onLoad", animateIn);
+  window.addEventListener("scroll", animateIn);
+
+  const contactElements = document.querySelector(
+    ".contacts-container"
+  ).children;
+  const contactsPos = contactElements[0].offsetTop;
+
+  function animateIn() {
+    let windowPos = window.scrollY;
+    if (windowPos > contactsPos - 300) {
+      contactElements[0].classList.add("pop-in");
+      contactElements[1].classList.add("pop-in", "pop-first");
+      contactElements[2].classList.add("pop-in", "pop-second");
+      contactElements[3].classList.add("pop-in", "pop-third");
+      contactElements[4].classList.add("pop-in", "pop-fourth");
+    }
+  }
+</script>

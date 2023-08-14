@@ -68,11 +68,11 @@
   window.addEventListener("scroll", animateIn);
 
   const header = document.querySelector(".about-me-heading");
+  const headerPos = header.offsetTop;
   const aboutContent = document.querySelector(".about-me-content");
 
   function animateIn() {
     let windowPos = window.scrollY;
-    let headerPos = header.offsetTop;
     if (headerPos < windowPos + 400) {
       header.classList.add("slide-right");
       aboutContent.classList.add("slide-up");

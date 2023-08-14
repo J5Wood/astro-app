@@ -57,9 +57,10 @@ import ProjectCard from "./ProjectCard.astro";
   const projectElements = document.querySelector(
     ".projects-container"
   ).children;
+  const projectPos = projectElements[0].offsetTop;
+
   function animateIn() {
-    let windowPos = window.scrollY;
-    let projectPos = projectElements[0].offsetTop;
+    const windowPos = window.scrollY;
     if (windowPos > projectPos - 400) {
       projectElements[0].classList.add("pop-in");
       projectElements[1].classList.add("pop-in");
