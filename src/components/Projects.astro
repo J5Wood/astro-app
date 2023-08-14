@@ -1,5 +1,27 @@
 ---
+import ProjectCard from "./ProjectCard.astro";
 ---
 
-<div>Projects</div>
-<style></style>
+<div class="projects-container">
+  <h2 class="project-header">Projects</h2>
+  <ProjectCard />
+  <ProjectCard />
+  <ProjectCard />
+</div>
+<style>
+  .projects-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 20% 80%;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .project-header {
+    grid-column: 1/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
