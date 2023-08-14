@@ -4,9 +4,10 @@ import ProjectCard from "./ProjectCard.astro";
 
 <div class="projects-container">
   <h2 class="project-header">Projects</h2>
-  <ProjectCard />
-  <ProjectCard />
-  <ProjectCard />
+
+  <div class="project-wrapper"><ProjectCard /></div>
+  <div class="project-wrapper"><ProjectCard /></div>
+  <div class="project-wrapper"><ProjectCard /></div>
 </div>
 <style>
   .projects-container {
@@ -23,5 +24,47 @@ import ProjectCard from "./ProjectCard.astro";
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+  }
+
+  .project-wrapper {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    border: 1px dashed yellow;
+    transition: opacity 0.4s ease-out 0.4s;
+  }
+
+  .card-two {
+    transition-delay: 0.6s;
+  }
+  .card-three {
+    transition-delay: 0.8s;
+  }
+
+  .pop-in {
+    opacity: 1;
   }
 </style>
+<script>
+  window.addEventListener("onLoad", animateIn);
+  window.addEventListener("scroll", animateIn);
+
+  const projectElements = document.querySelector(
+    ".projects-container"
+  ).children;
+  function animateIn() {
+    let windowPos = window.scrollY;
+    let projectPos = projectElements[0].offsetTop;
+    if (windowPos > projectPos - 400) {
+      projectElements[0].classList.add("pop-in");
+      projectElements[1].classList.add("pop-in");
+      projectElements[2].classList.add("pop-in", "card-two");
+      projectElements[3].classList.add("pop-in", "card-three");
+    }
+  }
+</script>
