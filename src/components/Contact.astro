@@ -1,26 +1,34 @@
 ---
 import ContactCard from "./ContactCard.astro";
+import ghWhite from "../images/github-white.png"
+import mediumWhite from "../images/medium-white.png"
+import liWhite from "../images/li-white.png"
+import mailWhite from "../images/mail-white.png"
+
+const ghLink = "https://github.com/J5Wood"
+const liLink = "https://www.linkedin.com/in/jeremyw00d"
+const mediumLink = "http://jwood206.medium.com/"
+const mailLink = "mailto:js.wood206@gmail.com"
 ---
 
 <div class="contacts-container">
   <h2 class="contact-header">Contact Me</h2>
-  <div class="contact-card-wrapper"><ContactCard /></div>
-  <div class="contact-card-wrapper"><ContactCard /></div>
-  <div class="contact-card-wrapper"><ContactCard /></div>
-  <div class="contact-card-wrapper"><ContactCard /></div>
+  <div class="contact-card-wrapper"><ContactCard image={liWhite} link={liLink}/></div>
+  <div class="contact-card-wrapper"><ContactCard image={ghWhite} link={ghLink}/></div>
+  <div class="contact-card-wrapper"><ContactCard image={mediumWhite} link={mediumLink}/></div>
+  <div class="contact-card-wrapper"><ContactCard image={mailWhite} link={mailLink}/></div>
 </div>
 <style>
   .contacts-container {
-    height: 100vh;
-    margin-top: 20vh;
+    height: 70vh;
     display: grid;
-    grid-template: 20% 60%/ 1fr 1fr 1fr 1fr;
+    grid-template:  14% 28% 56% 2%/ 1fr 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
   }
   .contact-header {
     grid-column: 1 / 5;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +40,7 @@ import ContactCard from "./ContactCard.astro";
   .contact-card-wrapper {
     width: 100%;
     height: 100%;
+    grid-row: 3 / 4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,7 +77,7 @@ import ContactCard from "./ContactCard.astro";
 
   function animateIn() {
     let windowPos = window.scrollY;
-    if (windowPos > contactsPos - 300) {
+    if (windowPos > contactsPos - 500) {
       contactElements[0].classList.add("pop-in");
       contactElements[1].classList.add("pop-in", "pop-first");
       contactElements[2].classList.add("pop-in", "pop-second");
