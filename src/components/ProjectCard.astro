@@ -1,15 +1,38 @@
 ---
+const {data} = Astro.props
+const {name, link, imgSrc, imgAlt, description, features} = data
+
 ---
-
-<h2 class="card">Project Card</h2>
-
+  <div class="card">
+    <h2>{name}</h2>
+    <a class="project-link" href={link}>
+    <img class="project-image" src={imgSrc} alt={imgAlt}/>
+  </a>
+    <p>{description}</p>
+    <ul>{features.map(feature => <li>{feature}</li>)}</ul>
+  </div>
 <style>
   .card {
     border: 1px solid blue;
     height: 100%;
     width: 100%;
+    display: grid;
+    grid-template: 15% 25% 15% 45% / 1fr;
+    align-items: center;
+    flex-flow: column nowrap;
+    text-align: center;
+  }
+
+  .project-link{
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
+  .project-image{
+    width: min(100%, 200px);
+  }
+
+
+
 </style>

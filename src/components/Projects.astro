@@ -1,17 +1,18 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
+import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 ---
 
 <div class="projects-container">
   <h2 class="project-header">Projects</h2>
 
-  <div class="project-wrapper"><ProjectCard /></div>
-  <div class="project-wrapper"><ProjectCard /></div>
-  <div class="project-wrapper"><ProjectCard /></div>
+  <div class="project-wrapper"><ProjectCard data={flavorTown}/></div>
+  <div class="project-wrapper"><ProjectCard data={picSure}/></div>
+  <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
 </div>
 <style>
   .projects-container {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 20% 80%;
@@ -29,7 +30,8 @@ import ProjectCard from "./ProjectCard.astro";
   }
 
   .project-wrapper {
-    height: 80%;
+    height: 100%;
+    height: fit-content;
     width: 80%;
     display: flex;
     align-items: center;
