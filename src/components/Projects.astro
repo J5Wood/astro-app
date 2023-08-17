@@ -3,8 +3,8 @@ import ProjectCard from "./ProjectCard.astro";
 import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 ---
 
-<div class="projects-container">
-  <h2 class="project-header">Projects</h2>
+<div  class="projects-container">
+  <h2 id="project-section" class="project-header">Projects</h2>
   <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
   <div class="project-wrapper"><ProjectCard data={flavorTown}/></div>
   <div class="project-wrapper"><ProjectCard data={picSure}/></div>

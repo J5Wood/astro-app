@@ -1,13 +1,14 @@
 ---
+import resume from "../assets/resume.pdf"
 ---
 
 <div class="nav">
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
-    <a>About Me</a>
-    <a>Projects</a>
-    <a>Contact</a>
-    <a>Resume</a>
+    <a href="#about-section">About Me</a>
+    <a href="#project-section">Projects</a>
+    <a href="#contact-section">Contact</a>
+    <a href={resume} target="_blank" download="jeremy/wood/resume">Resume</a>
   </span>
   <div class="animation-container">
     <hr class="animated-1" />
@@ -36,6 +37,18 @@
     grid-template: auto / 1fr 1fr 1fr 1fr;
     align-items: center;
     text-align: center;
+  }
+
+  .nav-links a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-links a:hover {
+    cursor: pointer;
+    border: .1em solid rgb(0, 236, 181);
+    border-radius: 2em;
+    transform: translate(-1px,-2px);
   }
 
   hr {
