@@ -5,17 +5,16 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 
 <div class="projects-container">
   <h2 class="project-header">Projects</h2>
-
+  <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
   <div class="project-wrapper"><ProjectCard data={flavorTown}/></div>
   <div class="project-wrapper"><ProjectCard data={picSure}/></div>
-  <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
 </div>
 <style>
   .projects-container {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 12em auto;
     align-items: center;
     justify-items: center;
   }
@@ -23,7 +22,7 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   .project-header {
     grid-column: 1/4;
     display: flex;
-    align-items: center;
+    align-items: center;``
     justify-content: center;
     opacity: 0;
     transition: opacity 0.4s ease-out;
@@ -31,19 +30,21 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 
   .project-wrapper {
     height: 100%;
-    height: fit-content;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    border: 1px dashed yellow;
+    border: 1px solid rgb(0, 236, 181);
+    border-radius: 1em;
     transition: opacity 0.4s ease-out 0.4s;
+    padding: 2px;
   }
 
   .card-two {
     transition-delay: 0.6s;
   }
+
   .card-three {
     transition-delay: 0.8s;
   }
