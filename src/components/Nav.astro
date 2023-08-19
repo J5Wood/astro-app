@@ -5,10 +5,10 @@ import resume from "../assets/resume.pdf"
 <div class="nav">
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
-    <a class="nav-link" href="#about-section">About Me</a>
-    <a class="nav-link" href="#project-section">Projects</a>
-    <a class="nav-link" href="#contact-section">Contact</a>
-    <a class="nav-link" href={resume} target="_blank" download="jeremy/wood/resume">Resume</a>
+    <div class="nav-link-wrapper"><a class="nav-link" href="#about-section">About Me</a></div class="nav-link-wrapper">
+    <div class="nav-link-wrapper"><a class="nav-link" href="#project-section">Projects</a></div>
+    <div class="nav-link-wrapper"><a class="nav-link" href="#contact-section">Contact</a></div>
+    <div class="nav-link-wrapper"><a class="nav-link" href={resume} target="_blank" download="jeremy/wood/resume">Resume</a></div>
   </span>
   <div class="animation-container">
     <hr class="animated-1" />
@@ -30,6 +30,7 @@ import resume from "../assets/resume.pdf"
     justify-content: center;
     align-items: center;
     padding: 10px;
+    line-height: 1em;
   }
 
   .nav-links {
@@ -37,27 +38,39 @@ import resume from "../assets/resume.pdf"
     grid-template: auto / 1fr 1fr 1fr 1fr;
     align-items: center;
     text-align: center;
+    gap: 1em;
+  }
+
+  .nav-link-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+    background: radial-gradient(circle farthest-corner at 0% 0%, rgba(169, 87, 241, 1) 0%, rgba(0, 236, 181, .5) 75%, rgba(16, 0, 236, .5) 100%);
+    padding: .1em;
+    transition: all 1s ease-in;
+
+  }
+
+  .nav-link-wrapper:hover{
+    transform: translate(-1px,-1px);
+    background: radial-gradient(circle farthest-corner at 0% 0%, rgba(169, 87, 241, 1) 0%, rgba(0, 236, 181, 1) 75%, rgba(16, 0, 236, 1) 100%);
   }
 
   .nav-link{
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     color: white;
-  }
-
-  .nav-link:hover {
-    cursor: pointer;
-    border: .1em solid rgb(0, 236, 181);
+    background: #13151a;
     border-radius: 2em;
-    transform: translate(-1px,-2px);
+    white-space: nowrap;
+    cursor: pointer;
   }
 
-  .highlight{
-    background-color:  rgb(169, 87, 241, .3);
-  }
-
-  .held-button{
-    background-color: rgba(0, 255, 251, 0.6);
-    transform: translate(6px, 8px);
+  #held-button{
+    background-color: rgb(0, 236, 181);
+    color: black;
   }
 
   hr {
@@ -119,11 +132,12 @@ import resume from "../assets/resume.pdf"
     link.addEventListener("mouseover",(e) => e.target.classList.add("highlight"))
     link.addEventListener("mousedown",(e) => {
       e.target.classList.remove("highlight");
-      e.target.classList.add("held-button");
+      // Set as ID for greater specificity
+      e.target.setAttribute("id", "held-button");
     })
     link.addEventListener("mouseleave",(e) => {
-      e.target.classList.remove("held-button");
       e.target.classList.remove("highlight");
+      e.target.removeAttribute("id", "held-button");
     })
   })
 
