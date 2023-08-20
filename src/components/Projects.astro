@@ -4,7 +4,7 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 ---
 
 <div  class="projects-container">
-  <h2 id="project-section" class="project-header">Projects</h2>
+  <div class="project-header-wrapper-one"><div class="project-header-wrapper-two"><h2 id="project-section" class="project-header">Projects</h2></div></div>
   <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
   <div class="project-wrapper"><ProjectCard data={flavorTown}/></div>
   <div class="project-wrapper"><ProjectCard data={picSure}/></div>
@@ -17,15 +17,38 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     grid-template-rows: 12em auto;
     align-items: center;
     justify-items: center;
+    overflow: visible;
   }
 
-  .project-header {
+  .project-header-wrapper-one{
     grid-column: 1/4;
-    display: flex;
-    align-items: center;``
-    justify-content: center;
     opacity: 0;
+    animation: slap-in 3s forwards;
     transition: opacity 0.4s ease-out;
+    background-color: rgb(0, 236, 181);
+    width: 15em;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-4deg);
+    clip-path: polygon(20% 9%, 96% 6%, 93% 70%, 100% 100%, 43% 94%, 1% 93%, 8% 45%, 4% 5%);
+
+  }
+  .project-header-wrapper-two{
+    background-color: rgb(16, 0, 236);
+    width: 12em;
+    height: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(2deg);
+    clip-path: polygon(0 1%, 100% 0, 94% 17%, 100% 82%, 78% 56%, 100% 100%, 0 100%, 2% 69%, 0 20%, 11% 21%);
+    text-align: center;
+  }
+  .project-header {
+    transform: rotate(2deg);
+    text-shadow: .06em .06em 1px black, -.06em -.06em 1px black, .06em -.06em 1px black, -.06em .06em 1px black;
   }
 
   .project-wrapper {
