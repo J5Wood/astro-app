@@ -2,6 +2,7 @@
 const {data} = Astro.props
 const {name, link, imgSrc, imgAlt, description, features} = data
 ---
+<div class="card-wrapper">  
   <div class="card">
     <h2 class="card-heading">{name}</h2>
     <a class="project-link" href={link}>
@@ -10,16 +11,29 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     <p class="card-description">{description}</p>
     <ul class="feature-list">{features.map(feature => <li>{feature}</li>)}</ul>
   </div>
+</div>
 <style>
-  .card {
-    height: 100%;
+  .card-wrapper {
     width: 100%;
+    height: 100%;
+    background: linear-gradient( 240deg, rgba(16, 0, 236, 1) 5%, rgba(169, 87, 241, 1) 10%, rgba(0, 236, 181, 1) 30%, rgba(16, 0, 236, 1) 60%, rgba(169, 87, 241, 1) 70%, rgba(0, 236, 181, .8) 80%);
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    height: 99%;
+    width: 99%;
     display: grid;
     grid-template: 1.5em auto auto auto / 1fr;
     align-items: start;
     flex-flow: column nowrap;
     text-align: center;
     gap: 1em;
+    background: #13151a;
+    border-radius: 1em;
   }
   .card-heading{
     padding-top: .2em;

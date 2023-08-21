@@ -18,8 +18,7 @@ export const flavorTown = {
   name: "Flavor Town",
   imgSrc: flavorTownPhoto,
   imgAlt: "Preview of Flavor Town app",
-  description:
-    "Flavor Town is a website for documenting your bucket-list restaurants",
+  description: "Flavor Town is a web app for documenting restaurants",
   features: [
     "Built with vanilla JavaScript on the frontend and a Rails API backend",
     "Employs Object Oriented JavaScript (OOJS)",
@@ -31,7 +30,7 @@ export const coffeeTalk = {
   name: "Coffee Talk",
   imgSrc: coffeeTalkPhoto,
   imgAlt: "Preview of Coffee Talk app",
-  description: "Coffee Talk is a coffee bean and brand review website",
+  description: "Coffee Talk is a coffee bean and brand review site",
   features: [
     "Fully built Ruby on Rails, MVC application",
     "Implemented user signup and login with Oauth and Github, and also basic username and password",

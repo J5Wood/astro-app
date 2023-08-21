@@ -4,20 +4,25 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 ---
 
 <div  class="projects-container">
-  <div class="project-header-wrapper-one"><div class="project-header-wrapper-two"><h2 id="project-section" class="project-header">Projects</h2></div></div>
-  <div class="project-wrapper"><ProjectCard data={coffeeTalk}/></div>
-  <div class="project-wrapper"><ProjectCard data={flavorTown}/></div>
-  <div class="project-wrapper"><ProjectCard data={picSure}/></div>
+  <div class="project-header-wrapper-one">
+    <div class="project-header-wrapper-two">
+      <h2 id="project-section" class="project-header">Projects</h2>
+    </div>
+  </div>
+  <div class="project-wrapper "><ProjectCard data={coffeeTalk}/></div>
+  <div class="project-wrapper card-two"><ProjectCard data={flavorTown}/></div>
+  <div class="project-wrapper card-three"><ProjectCard data={picSure}/></div>
 </div>
 <style>
   .projects-container {
-    height: 100vh;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 12em min(80vh, 20em);
+    grid-template-rows: 12em auto;
     align-items: center;
     justify-items: center;
     overflow: hidden;
+    z-index: 1;
   }
 
   .project-header-wrapper-one{
@@ -52,24 +57,24 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   }
 
   .project-wrapper {
-    height: 100%;
     width: 80%;
+    height: 20em;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    border: 1px solid rgb(0, 236, 181);
-    border-radius: 1em;
-    transition: opacity 0.4s ease-out 0.4s;
-    padding: 2px;
+    transition: opacity 0.4s ease-out 0.4s, position 1s ease-in;
+    grid-column: 1 / 2;
   }
 
   .card-two {
     transition-delay: 0.6s;
+    grid-column: 2 / 3;
   }
 
   .card-three {
     transition-delay: 0.8s;
+    grid-column: 3 / 4;
   }
 
   .pop-in {
@@ -79,7 +84,7 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   .enlarge{
     position: fixed;
     top: 20%;
-    max-height: 60vh;
+    height: 60vh;
     max-width: 60%;
     background-color: black;
   }
@@ -94,6 +99,32 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     background: rgb(0,0,0,.4);
     z-index: -1;
   }
+
+  .enlarge::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: provide-fade .3s ease-out .02s forwards;
+    z-index: 2;
+    margin: -1px;
+    background: black;
+    border: 1px solid black;
+    border-radius: 1em;
+  }
+
+  @keyframes provide-fade {
+    0%{
+      opacity: 1;
+      background: black;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
   
 </style>
 <script>
@@ -107,18 +138,20 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     if (windowPos > projectPos - 400) {
       projectElements[0].classList.add("pop-in");
       projectElements[1].classList.add("pop-in");
-      projectElements[2].classList.add("pop-in", "card-two");
-      projectElements[3].classList.add("pop-in", "card-three");
+      projectElements[2].classList.add("pop-in");
+      projectElements[3].classList.add("pop-in");
     }
   }
 
   window.addEventListener("onLoad", animateIn);
   window.addEventListener("scroll", animateIn);
 
-  projectElements[1].addEventListener("click", (e) => expandContractCard(e))
+
+  const projectCards = [projectElements[1], projectElements[2], projectElements[3]]
+  projectCards.forEach(card => card.addEventListener("click", (e) => expandContractCard(e)))
 
 function expandContractCard(e){
-  const featureList = e.currentTarget.children[0].children[3]
+  const featureList = e.currentTarget.children[0].children[0].children[3]
   if(e.currentTarget.classList.contains("enlarge")){
     featureList.classList.remove("show")
     e.currentTarget.classList.remove("enlarge")
