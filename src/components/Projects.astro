@@ -11,13 +11,13 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 </div>
 <style>
   .projects-container {
-    min-height: 100vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 12em auto;
+    grid-template-rows: 12em min(80vh, 20em);
     align-items: center;
     justify-items: center;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .project-header-wrapper-one{
@@ -33,8 +33,8 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     align-items: center;
     transform: rotate(-4deg);
     clip-path: polygon(20% 9%, 96% 6%, 93% 70%, 100% 100%, 43% 94%, 1% 93%, 8% 45%, 4% 5%);
-
   }
+  
   .project-header-wrapper-two{
     background-color: rgb(16, 0, 236);
     width: 12em;
@@ -75,11 +75,28 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   .pop-in {
     opacity: 1;
   }
+
+  .enlarge{
+    position: fixed;
+    top: 20%;
+    max-height: 60vh;
+    max-width: 60%;
+    background-color: black;
+  }
+
+  .enlarge::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0,0,0,.4);
+    z-index: -1;
+  }
+  
 </style>
 <script>
-  window.addEventListener("onLoad", animateIn);
-  window.addEventListener("scroll", animateIn);
-
   const projectElements = document.querySelector(
     ".projects-container"
   ).children;
@@ -94,4 +111,20 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
       projectElements[3].classList.add("pop-in", "card-three");
     }
   }
+
+  window.addEventListener("onLoad", animateIn);
+  window.addEventListener("scroll", animateIn);
+
+  projectElements[1].addEventListener("click", (e) => expandContractCard(e))
+
+function expandContractCard(e){
+  const featureList = e.currentTarget.children[0].children[3]
+  if(e.currentTarget.classList.contains("enlarge")){
+    featureList.classList.remove("show")
+    e.currentTarget.classList.remove("enlarge")
+  } else {
+    e.currentTarget.classList.add("enlarge")
+    featureList.classList.add("show")
+  }
+}
 </script>
