@@ -12,7 +12,11 @@ const mailLink = "mailto:js.wood206@gmail.com"
 ---
 
 <div id="contact-section" class="contacts-container">
-  <h2 class="contact-header">Contact Me</h2>
+  <div class="outer-header-wrapper">
+    <div class="inner-header-wrapper">
+      <h2 class="contact-header">Contact Me</h2>
+    </div>
+  </div>
   <div class="contact-card-wrapper"><ContactCard image={liWhite} link={liLink}/></div>
   <div class="contact-card-wrapper"><ContactCard image={ghWhite} link={ghLink}/></div>
   <div class="contact-card-wrapper"><ContactCard image={mediumWhite} link={mediumLink}/></div>
@@ -27,17 +31,36 @@ const mailLink = "mailto:js.wood206@gmail.com"
     align-items: center;
   }
   
-  .contact-header {
+  .outer-header-wrapper{
     grid-column: 1 / 5;
     grid-row: 2 / 3;
     display: flex;
     justify-content: center;
     align-items: center;
     transform: rotateY(180deg);
-    transition: all 1s ease-in;
+    backface-visibility: hidden;
+    transition: all 1s ease-in; 
+    background: radial-gradient(ellipse farthest-corner at 0% 0%, rgba(0, 236, 181, 0.9) 15%, rgba(16, 0, 236, 0.2) 25%, rgba(0, 236, 181, 0.75) 50%, rgba(16, 0, 236, 1) 69%, rgba(169, 87, 241, .8) 72%, rgba(16, 0, 236, 0.6) 80%, rgba(0, 236, 181, 1) 95%);
+    width: 100%;
+    height: 4em;
+  }
+  
+  .inner-header-wrapper {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-black);
     backface-visibility: hidden;
   }
 
+  .contact-header{
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: all 1s ease-in;
+  }
+  
   .contact-card-wrapper {
     width: 100%;
     height: 100%;
@@ -83,6 +106,7 @@ const mailLink = "mailto:js.wood206@gmail.com"
     let windowPos = window.scrollY;
     if (windowPos > contactsPos - 500) {
       contactElements[0].classList.add("pop-in");
+      contactElements[0].children[0].children[0].classList.add("pop-in");
       contactElements[1].classList.add("pop-in", "pop-first");
       contactElements[2].classList.add("pop-in", "pop-second");
       contactElements[3].classList.add("pop-in", "pop-third");
