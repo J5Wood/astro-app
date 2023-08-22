@@ -33,11 +33,11 @@ import headshot from "../images/bust.png";
     animation: rollin 3s forwards 0.8s;
     visibility: hidden;
     aspect-ratio: 1 / 1;
-    background: radial-gradient(ellipse farthest-corner at 0% 0%, rgba(16, 0, 236, .5) 5%, rgba(169, 87, 241, .7) 35%, rgba(0, 236, 181, .9) 50%, rgba(169, 87, 241, 1) 65%, rgba(16, 0, 236, 1) 90%);
+    background: radial-gradient(ellipse farthest-corner at 0% 0%, rgba(var(--main-blue), .5) 5%, rgba(var(--main-purple), .7) 35%, rgba(var(--main-green), .9) 50%, rgba(var(--main-purple), 1) 65%, rgba(var(--main-blue), 1) 90%);
   }
 
   .hero-image {
-    background-color: #13151a;
+    background-color: var(--background-black);
     margin: .35em ;
     border-radius: 50%;
     height: 100%;

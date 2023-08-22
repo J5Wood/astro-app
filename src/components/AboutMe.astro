@@ -11,18 +11,28 @@
     and inclusive projects that enrichen and better people's lives. When I'm
     not coding, I enjoy travelling and fixing motorcycles!
   </p>
+  <div class="gradient-container"></div>
 </div>
 <style>
   .about-me-container {
     min-height: 100vh;
     display: grid;
-    grid-template: 4em 9em auto / 25vw 1fr;
+    grid-template: 4em 9em auto 4em/ 25vw 1fr;
     text-align: center;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
   }
 
+  .gradient-container{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 0deg, var(--background-black) 0%, rgba(19, 21, 26, 0) 20%);
+  }
+  
   .about-me-heading {
     display: flex;
     justify-content: flex-start;
@@ -34,24 +44,23 @@
     width: 100%;
     height: 5em;
     border-radius: 1em 0em 0em 1em;
-    border: solid rgb(16, 0, 236);
-    border-width: .5em 0 .5em .5em;
+    border: solid rgb(var(--main-blue));
+    border-width: .25em 0 .25em .25em;
     position: relative;
     left: 100%;
     transition: left 0.4s ease-in-out;
-    background: #13151a;
+    background: var(--background-black);
   }
 
   .about-me-heading::before{
     content: '';
     position: absolute;
-    top: -.6em;
-    left: -.6em;
-    bottom: -.6em;
+    top: -.4em;
+    left: -.4em;
+    bottom: -.4em;
     right: 0;
-    padding: 1em;
     border-radius: 1em 0em 0em 1em;
-    background-color: rgb(0, 236, 181);
+    background-color: rgb(var(--main-green));
     z-index: -1;
   }
 
@@ -62,7 +71,8 @@
     grid-column: 1/ 3;
     border-style: solid;
     border-width: 0.25em;
-    border-color: rgb(169, 87, 241, 0.7);
+    border-color: rgb(var(--main-purple), 0.7);
+
     border-radius: 1em;
     position: relative;
     top: 100%;
@@ -71,9 +81,9 @@
     line-height: 1.5em;
     text-indent: 2em;
     font-size: large;
-    background: #13151a;
+    background: var(--background-black);
+    z-index: -1;
   }
-
 
   .about-me-content::before{
     content: '';
@@ -84,8 +94,7 @@
     right: .2em;
     left: .2em;
     border-radius: 1em;
-    border: 5px solid  rgb(0, 236, 181,.7);
-    z-index: -1;
+    border: 5px solid  rgb(var(--main-green),.7);
   }
 
   .about-me-content::after{
@@ -97,7 +106,7 @@
     right: -.4em;
     left: -.4em;
     border-radius: 1em;
-    border: 5px solid rgb(16, 0, 236, .5);
+    border: 5px solid rgb(var(--main-blue), .5);
     z-index: -1;
   }
 
