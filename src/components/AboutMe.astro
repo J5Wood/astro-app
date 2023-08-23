@@ -1,8 +1,8 @@
 ---
 ---
 
-<div class="about-me-container">
-  <h2 id="about-section" class="about-me-heading">About Me</h2>
+<div  id="about-section" class="about-me-container">
+  <h2 class="about-me-heading">About Me</h2>
   <p class="about-me-content">
     I'm a full stack web developer, problem solver, and builder of
     responsive web applications. I love learning and implementing new
@@ -25,14 +25,6 @@
     position: relative;
   }
 
-  .gradient-container{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient( 0deg, var(--background-black) 0%, rgba(19, 21, 26, 0) 20%);
-  }
-  
   .about-me-heading {
     display: flex;
     justify-content: flex-start;
@@ -47,11 +39,11 @@
     border: inset rgb(var(--main-blue));
     border-width: .25em 0 .25em .25em;
     position: relative;
-    left: 100%;
+    left: 110%;
     transition: left 0.4s ease-in-out;
     background: var(--background-black);
   }
-
+  
   .about-me-heading::before{
     content: '';
     position: absolute;
@@ -63,7 +55,7 @@
     background-color: rgb(var(--main-green));
     z-index: -1;
   }
-
+  
   .about-me-content {
     margin: 0 4em 0 4em;
     padding: 4em;
@@ -83,7 +75,7 @@
     background: var(--background-black);
     z-index: -1;
   }
-
+  
   .about-me-content::before{
     content: '';
     margin: -1em;
@@ -95,7 +87,7 @@
     border-radius: 1em;
     border: 5px solid  rgb(var(--main-green),.7);
   }
-
+  
   .about-me-content::after{
     content: '';
     margin: -1em;
@@ -109,28 +101,37 @@
     z-index: -1;
   }
 
-  .slide-right {
+  .gradient-container{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 0deg, var(--background-black) 0%, rgba(19, 21, 26, 0) 20%);
+  }
+    
+  .slide-in {
     left: 0%;
   }
-
+  
   .slide-up {
     opacity: 1;
     top: 0%;
   }
 </style>
 <script>
-  window.addEventListener("onLoad", animateIn);
-  window.addEventListener("scroll", animateIn);
-
-  const header = document.querySelector(".about-me-heading");
-  const headerPos = header.offsetTop;
+  const container = document.querySelector(".about-me-container")
+  const containerPosition = container.offsetTop
+  const aboutHeader = document.querySelector(".about-me-heading");
   const aboutContent = document.querySelector(".about-me-content");
 
   function animateIn() {
-    let windowPos = window.scrollY;
-    if (headerPos < windowPos + 400) {
-      header.classList.add("slide-right");
+    const midpoint = window.scrollY + (window.innerHeight / 2)
+    if (containerPosition < midpoint) {
+      aboutHeader.classList.add("slide-in");
       aboutContent.classList.add("slide-up");
     }
   }
+
+  window.addEventListener("onLoad", animateIn);
+  window.addEventListener("scroll", animateIn);
 </script>

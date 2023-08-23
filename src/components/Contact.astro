@@ -94,17 +94,13 @@ const mailLink = "mailto:js.wood206@gmail.com"
   }
 </style>
 <script>
-  window.addEventListener("onLoad", animateIn);
-  window.addEventListener("scroll", animateIn);
-
-  const contactElements = document.querySelector(
-    ".contacts-container"
-  ).children;
-  const contactsPos = contactElements[0].offsetTop;
-
+  const contactsContainer = document.querySelector(".contacts-container")
+  const contactElements = contactsContainer.children;
+  const contactsPos = contactsContainer.offsetTop;
+  
   function animateIn() {
-    let windowPos = window.scrollY;
-    if (windowPos > contactsPos - 500) {
+    let midpoint = window.scrollY + (window.innerHeight / 2)
+    if (contactsPos < midpoint) {
       contactElements[0].classList.add("pop-in");
       contactElements[0].children[0].children[0].classList.add("pop-in");
       contactElements[1].classList.add("pop-in", "pop-first");
@@ -113,4 +109,7 @@ const mailLink = "mailto:js.wood206@gmail.com"
       contactElements[4].classList.add("pop-in", "pop-fourth");
     }
   }
+
+  window.addEventListener("onLoad", animateIn);
+  window.addEventListener("scroll", animateIn);
 </script>

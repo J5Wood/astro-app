@@ -3,10 +3,10 @@ import ProjectCard from "./ProjectCard.astro";
 import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
 ---
 
-<div  class="projects-container">
+<div  id="project-section"  class="projects-container">
   <div class="project-header-wrapper-one">
     <div class="project-header-wrapper-two">
-      <h2 id="project-section" class="project-header">Projects</h2>
+      <h2 class="project-header">Projects</h2>
     </div>
   </div>
   <div class="project-wrapper "><ProjectCard data={coffeeTalk}/></div>
@@ -137,14 +137,13 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   
 </style>
 <script>
-  const projectElements = document.querySelector(
-    ".projects-container"
-  ).children;
-  const projectPos = projectElements[0].offsetTop;
+  const projectsContainer = document.querySelector(".projects-container")
+  const projectPosition = projectsContainer.offsetTop
+  const projectElements = projectsContainer.children
 
   function animateIn() {
-    const windowPos = window.scrollY;
-    if (windowPos > projectPos - 400) {
+    const midpoint = window.scrollY + (window.innerHeight / 2)
+    if (projectPosition < midpoint) {
       projectElements[0].classList.add("pop-in");
       projectElements[1].classList.add("pop-in");
       projectElements[2].classList.add("pop-in");
