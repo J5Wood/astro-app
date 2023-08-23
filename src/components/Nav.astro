@@ -124,6 +124,16 @@ import resume from "../assets/resume.pdf"
       width: 81%;
     }
   }
+
+  @media (max-width: 450px) {
+  .nav-links {
+    display: grid;
+    grid-template: auto auto / 1fr 1fr ;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+  }
+  }
 </style>
 <script>
   const links = document.querySelectorAll(".nav-link")

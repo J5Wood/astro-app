@@ -3,14 +3,17 @@
 
 <div  id="about-section" class="about-me-container">
   <h2 class="about-me-heading">About Me</h2>
-  <p class="about-me-content">
-    I'm a full stack web developer, problem solver, and builder of
-    responsive web applications. I love learning and implementing new
-    technologies, and I'm forever a student of tech. The web is one of the
-    most exciting platforms ever created, and I use it to build performant
-    and inclusive projects that enrichen and better people's lives. When I'm
-    not coding, I enjoy travelling and fixing motorcycles!
-  </p>
+  <div class="about-me-content-wrapper">
+
+    <p class="about-me-content">
+      I'm a full stack web developer, problem solver, and builder of
+      responsive web applications. I love learning and implementing new
+      technologies, and I'm forever a student of tech. The web is one of the
+      most exciting platforms ever created, and I use it to build performant
+      and inclusive projects that enrichen and better people's lives. When I'm
+      not coding, I enjoy travelling and fixing motorcycles!
+    </p>
+  </div>
   <div class="gradient-container"></div>
 </div>
 <style>
@@ -34,7 +37,7 @@
     grid-column-start: 2;
     grid-row-start: 2;
     width: 100%;
-    height: 5em;
+    height: min(5em, 75%);
     border-radius: 1em 0em 0em 1em;
     border: inset rgb(var(--main-blue));
     border-width: .25em 0 .25em .25em;
@@ -55,20 +58,28 @@
     background-color: rgb(var(--main-green));
     z-index: -1;
   }
-  
-  .about-me-content {
+
+  .about-me-content-wrapper{
     margin: 0 4em 0 4em;
-    padding: 4em;
     grid-row-start: 3;
     grid-column: 1/ 3;
+    position: relative;
+    top: 100%;
+    trans
+    opacity: 0;
+    transition: all 1.5s cubic-bezier(0.6, 0.3, 0.3, 1.01);
+    z-index: -1;
+  }
+  
+  .about-me-content {
+    padding: 2em;
+    height: 100%;
+    width: 100%;
     border-style: solid;
     border-width: 0.25em;
     border-color: rgb(var(--main-purple), 0.7);
     border-radius: 1em;
     position: relative;
-    top: 100%;
-    opacity: 0;
-    transition: all 1.5s cubic-bezier(0.6, 0.3, 0.3, 1.01);
     line-height: 1.5em;
     text-indent: 2em;
     font-size: large;
@@ -102,11 +113,11 @@
   }
 
   .gradient-container{
-    content: '';
-    position: absolute;
+    grid-row: 4 / 5;
+    grid-column: 1 / 3;
     width: 100%;
     height: 100%;
-    background: linear-gradient( 0deg, var(--background-black) 0%, rgba(19, 21, 26, 0) 20%);
+    background: linear-gradient( 0deg, var(--background-black) 0%, rgba(19, 21, 26, 0) 100%);
   }
     
   .slide-in {
@@ -117,12 +128,25 @@
     opacity: 1;
     top: 0%;
   }
+
+  @media (max-width: 450px){
+    .about-me-content {
+      padding: 1em;
+      text-indent: 1em;
+    }
+  }
+  @media (max-width: 320px){
+    .about-me-content {
+      padding: 0em;
+      text-indent: .5em;
+    }
+  }
 </style>
 <script>
   const container = document.querySelector(".about-me-container")
   const containerPosition = container.offsetTop
   const aboutHeader = document.querySelector(".about-me-heading");
-  const aboutContent = document.querySelector(".about-me-content");
+  const aboutContent = document.querySelector(".about-me-content-wrapper");
 
   function animateIn() {
     const midpoint = window.scrollY + (window.innerHeight / 2)

@@ -6,8 +6,8 @@ const {name, link, imgSrc, imgAlt, description, features} = data
   <div class="card">
     <h2 class="card-heading">{name}</h2>
     <a class="project-link" href={link}>
-    <img class="project-image" src={imgSrc} alt={imgAlt}/>
-  </a>
+      <img class="project-image" src={imgSrc} alt={imgAlt}/>
+    </a>
     <p class="card-description">{description}</p>
     <ul class="feature-list">{features.map(feature => <li>{feature}</li>)}</ul>
   </div>
@@ -36,10 +36,10 @@ const {name, link, imgSrc, imgAlt, description, features} = data
   
   .card-heading{
     padding-top: .2em;
-    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
 
   .card-description{
