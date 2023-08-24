@@ -1,18 +1,31 @@
 ---
+import githubLogo from "../images/github-white.png"
+
 const {data} = Astro.props
 const {name, link, imgSrc, imgAlt, description, features} = data
+
 ---
 <div class="card-wrapper">  
   <div class="card">
     <h2 class="card-heading">{name}</h2>
-    <a class="project-link" href={link}>
-      <img class="project-image" src={imgSrc} alt={imgAlt}/>
-    </a>
+    <img class="project-image" src={imgSrc} alt={imgAlt}/>
     <p class="card-description">{description}</p>
     <ul class="feature-list">{features.map(feature => <li>{feature}</li>)}</ul>
+    <a href={link} class="github-button"><img class="github-logo" src={githubLogo}/></a>
   </div>
 </div>
 <style>
+
+  .github-logo{
+    width: 100%;
+  }
+  .github-button{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 2em;
+    display: none;
+  }
   .card-wrapper {
     width: 100%;
     height: 100%;
@@ -21,27 +34,40 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px;
   }
   
   .card {
-    height: 99%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
     display: grid;
     grid-template: auto auto auto auto / 1fr;
     align-items: space-around;;
     flex-flow: column nowrap;
     background: #13151a;
     border-radius: 1em;
+    gap: 1em;
+    padding: 1em 0 1em 0;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    cursor: pointer;
   }
   
   .card-heading{
-    padding-top: .2em;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: 100%;
   }
-
+  
+  .project-image{
+    width: min(85%, 250px);
+    aspect-ratio: 1 / .8;
+    border-radius: 1em;
+  }
+  
   .card-description{
     text-indent: 1em;
     text-align: center;
@@ -50,19 +76,7 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     align-items: center;
     height: 100%;
   }
-
-  .project-link{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .project-image{
-    width: min(85%, 250px);
-    aspect-ratio: 1 / .8;
-    border-radius: 1em;
-  }
-
+  
   .feature-list{
     height: 100%;
     display: flex;
@@ -76,5 +90,12 @@ const {name, link, imgSrc, imgAlt, description, features} = data
 
   .show{
     display: inline;
+  }
+
+  @media (max-width: 450px){
+    .github-button{
+      position: initial;
+    }
+
   }
 </style>
