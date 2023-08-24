@@ -142,28 +142,36 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     grid-template-columns: 1fr;
     grid-template-rows: 12em auto auto auto;
     gap: 1em;
+    }
+
+    .outer-header-wrapper{
+      grid-column: 1/2;
+    }
+
+    .project-wrapper {
+      grid-column: 1 / 2;
+    }
+
+    .card-two {
+      transition-delay: 0.6s;
+      grid-column: 1 / 2;
+    }
+
+    .card-three {
+      transition-delay: 0.8s;
+      grid-column: 1 / 2;
+    }
+
+    .enlarge{
+      top: 5%;
+    }
+  }
+  @media (max-width: 300px){
+    .enlarge{
+      top: 1%;
+    }
   }
 
-  .outer-header-wrapper{
-    grid-column: 1/2;
-  }
-
-  .project-wrapper {
-    grid-column: 1 / 2;
-  }
-
-  .card-two {
-    transition-delay: 0.6s;
-    grid-column: 1 / 2;
-  }
-
-  .card-three {
-    transition-delay: 0.8s;
-    grid-column: 1 / 2;
-  }
-
-  }
-  
 </style>
 <script>
   const projectsContainer = document.querySelector(".projects-container")
