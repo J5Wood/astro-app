@@ -1,6 +1,8 @@
 ---
 import resume from "../assets/resume.pdf"
+
 ---
+<!-- ! Can't click collapsed buttons!!! -->
 
 <div class="nav">
   <h1>Jeremy Wood</h1>
@@ -22,7 +24,7 @@ import resume from "../assets/resume.pdf"
     grid-template: auto auto / auto 1fr;
     gap: 10px;
     padding-top: 1em;
-  }
+  }``
 
   .nav h1 {
     display: inline;
@@ -147,6 +149,19 @@ import resume from "../assets/resume.pdf"
     }
     .nav {
       margin-bottom: -4em;
+    }
+  }
+
+  @media (prefers-color-scheme: dark){``
+    .nav-link{
+      color: var(--text-white);
+      background: var(--background-black);
+    }
+  }
+  @media (prefers-color-scheme: light){
+    .nav-link{
+      color: var(--text-black);
+      background: var(--background-white);
     }
   }
 </style>

@@ -55,7 +55,7 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   }
   
   .inner-header-wrapper{
-    background-color: #13151a;
+    background-color: var(--background-black);
     width: 92%;
     height: 105%;
     display: flex;
@@ -171,7 +171,24 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
       top: 1%;
     }
   }
-
+  @media (prefers-color-scheme: dark){
+    .enlarge::after{
+      background: var(--background-black);
+      border: 1px solid var(--background-black);
+    }
+    .inner-header-wrapper{
+      background-color: var(--background-black);
+    }
+  }
+  @media (prefers-color-scheme: light){
+    .enlarge::after{
+      background: var(--background-white);
+      border: 1px solid var(--background-white);
+    }
+    .inner-header-wrapper{
+      background-color: var(--background-white);
+    }
+  } 
 </style>
 <script>
   const projectsContainer = document.querySelector(".projects-container")
@@ -192,19 +209,36 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   window.addEventListener("scroll", animateIn);
 
   const projectCards = [projectElements[1], projectElements[2], projectElements[3]]
-  projectCards.forEach(card => card.addEventListener("click", (e) => expandContractCard(e)))
+  projectCards.forEach(card => card.addEventListener("click", (e) => expandAndContractCard(e)))
 
-function expandContractCard(e){
-  const githubButton = e.currentTarget.children[0].children[0].children[4]
-  const featureList = e.currentTarget.children[0].children[0].children[3]
-  if(e.currentTarget.classList.contains("enlarge")){
-    featureList.classList.remove("show")
-    e.currentTarget.classList.remove("enlarge")
-    githubButton.classList.remove("show")
-  } else {
-    e.currentTarget.classList.add("enlarge")
-    featureList.classList.add("show")
-    githubButton.classList.add("show")
+  function expandAndContractCard(e){
+    const colorScheme = getPreferredColorScheme()
+    let githubButton
+    if(colorScheme === "dark"){
+      githubButton = e.currentTarget.children[0].children[0].children[4]
+    } else {
+      githubButton = e.currentTarget.children[0].children[0].children[5]
+    }
+    const featureList = e.currentTarget.children[0].children[0].children[3]
+    if(e.currentTarget.classList.contains("enlarge")){
+      featureList.classList.remove("show")
+      e.currentTarget.classList.remove("enlarge")
+      githubButton.classList.remove("show")
+    } else {
+      e.currentTarget.classList.add("enlarge")
+      featureList.classList.add("show")
+      githubButton.classList.add("show")
+    }
   }
-}
+
+  function getPreferredColorScheme() {
+    if (window.matchMedia) {
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+    return 'dark';
+  }
 </script>

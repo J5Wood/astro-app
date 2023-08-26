@@ -1,5 +1,6 @@
 ---
-import githubLogo from "../images/github-white.png"
+import whiteGithubLogo from "../images/github-white.png"
+import blackGithubLogo from "../images/github-black.png"
 
 const {data} = Astro.props
 const {name, link, imgSrc, imgAlt, description, features} = data
@@ -11,7 +12,8 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     <img class="project-image" src={imgSrc} alt={imgAlt}/>
     <p class="card-description">{description}</p>
     <ul class="feature-list">{features.map(feature => <li>{feature}</li>)}</ul>
-    <a href={link} class="github-button"><img class="github-logo" src={githubLogo}/></a>
+    <a href={link} class="github-button"><img class="github-logo" src={whiteGithubLogo}/></a>
+    <a href={link} class="github-button hide"><img class="github-logo" src={blackGithubLogo}/></a>
   </div>
 </div>
 <style>
@@ -44,7 +46,7 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     grid-template: auto auto auto auto / 1fr;
     align-items: space-around;;
     flex-flow: column nowrap;
-    background: #13151a;
+    background: var(--background-black);
     border-radius: 1em;
     gap: 1em;
     padding: 1em 0 1em 0;
@@ -92,9 +94,92 @@ const {name, link, imgSrc, imgAlt, description, features} = data
     display: inline;
   }
 
+  .hide{
+    display: none;
+  }
+
   @media (max-width: 600px){
     .github-button{
       position: initial;
     }
   }
+
+  @media (prefers-color-scheme: dark){
+    .card {
+      background: var(--background-black);
+    }
+  }
+
+  @media (prefers-color-scheme: light){
+    .card {
+      background: var(--background-white);
+    }
+  }
 </style>
+<script>
+  const githubButtons = document.querySelectorAll(".github-button")
+  const blackGithubButtons = []
+  const whiteGithubButtons = [];
+
+  for(let i = 0; i < githubButtons.length; i++)
+  if(i % 2 === 0){
+    whiteGithubButtons.push(githubButtons[i])
+  } else{
+    blackGithubButtons.push(githubButtons[i])
+  }
+
+  function setColorScheme(scheme) {
+    switch(scheme){
+      case 'dark':
+        displayWhiteLogo()
+        break;
+      case 'light':
+        displayBlackLogo()
+        break;
+      default:
+        break;
+    }
+  }
+
+  function getPreferredColorScheme() {
+    if (window.matchMedia) {
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+    return 'dark';
+  }
+
+  function updateColorScheme(){
+      setColorScheme(getPreferredColorScheme());
+  }
+
+  if(window.matchMedia){
+    var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    colorSchemeQuery.addEventListener('change', updateColorScheme);
+  }
+
+  updateColorScheme();
+
+  function displayBlackLogo() {
+    console.log("change to black logo")
+    whiteGithubButtons.forEach(button => {
+      button.classList.add("hide")
+    })
+    blackGithubButtons.forEach(button=> {
+      button.classList.remove("hide")
+    })
+  }
+
+  function displayWhiteLogo() {
+    console.log("change to white logo")
+    blackGithubButtons.forEach(button => {
+      button.classList.add("hide")
+    })
+    whiteGithubButtons.forEach(button=> {
+      button.classList.remove("hide")
+    })
+  }
+</script>

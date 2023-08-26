@@ -136,6 +136,27 @@
       text-indent: .5em;
     }
   }
+
+  @media(prefers-color-scheme: dark){
+    .about-me-heading {
+      background: var(--background-black);
+    }
+    .about-me-content{
+      background: var(--background-black);
+    }    
+  }
+
+  @media(prefers-color-scheme: light){
+    .about-me-heading {
+      background: var(--background-white);
+    }
+    .about-me-content{
+      background: var(--background-white);
+    }
+    .gradient-container{
+      background: linear-gradient( 0deg, var(--background-white) 0%, rgba(19, 21, 26, 0) 100%);
+    }
+  }
 </style>
 <script>
   const container = document.querySelector(".about-me-container")

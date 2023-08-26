@@ -82,7 +82,7 @@ import headshot from "../images/bust.png";
   .arrow {
     width: 100%;
     height: 0.3em;
-    background-color: rgba(255, 255, 255, 0.747);
+    background-color: var(--background-white)
   }
 
   .left {
@@ -112,6 +112,24 @@ import headshot from "../images/bust.png";
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @media (prefers-color-scheme: dark){
+    .hero-image{
+      background-color: var(--background-black);
+    }
+    .arrow{
+      background-color: var(--background-white)
+    }
+  }
+
+  @media (prefers-color-scheme: light){
+    .hero-image{
+      background-color: var(--background-white);
+    }
+    .arrow{
+      background-color: var(--background-black)
     }
   }
 </style>
