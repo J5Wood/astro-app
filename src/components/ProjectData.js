@@ -1,6 +1,6 @@
-import picSurePhoto from "../assets/pic-sure.png";
-import flavorTownPhoto from "../assets/flavor-town.png";
-import coffeeTalkPhoto from "../assets/coffee-talk.png";
+import picSurePhoto from "../images/pic-sure.png";
+import flavorTownPhoto from "../images/flavor-town.png";
+import coffeeTalkPhoto from "../images/coffee-talk.png";
 
 export const picSure = {
   name: "Pic-Sure",
