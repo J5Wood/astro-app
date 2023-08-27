@@ -4,6 +4,10 @@ import ghWhite from "../images/github-white.png"
 import mediumWhite from "../images/medium-white.png"
 import liWhite from "../images/li-white.png"
 import mailWhite from "../images/mail-white.png"
+import ghBlack from "../images/github-black.png"
+import mediumBlack from "../images/medium-black.png"
+import liBlack from "../images/li-black.png"
+import mailBlack from "../images/mail-black.png"
 
 const ghLink = "https://github.com/J5Wood"
 const liLink = "https://www.linkedin.com/in/jeremyw00d"
@@ -21,6 +25,10 @@ const mailLink = "mailto:js.wood206@gmail.com"
   <div class="contact-card-wrapper"><ContactCard image={ghWhite} link={ghLink}/></div>
   <div class="contact-card-wrapper"><ContactCard image={mediumWhite} link={mediumLink}/></div>
   <div class="contact-card-wrapper"><ContactCard image={mailWhite} link={mailLink}/></div>
+  <div class="contact-card-wrapper hide"><ContactCard image={liBlack} link={liLink}/></div>
+  <div class="contact-card-wrapper hide"><ContactCard image={ghBlack} link={ghLink}/></div>
+  <div class="contact-card-wrapper hide"><ContactCard image={mediumBlack} link={mediumLink}/></div>
+  <div class="contact-card-wrapper hide"><ContactCard image={mailBlack} link={mailLink}/></div>
 </div>
 <style>
   .contacts-container {
@@ -92,8 +100,91 @@ const mailLink = "mailto:js.wood206@gmail.com"
   .pop-fourth {
     transition-delay: 0.8s;
   }
+
+  .hide {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark){
+    .inner-header-wrapper {
+      background: var(--background-black);
+    }
+  }
+
+  @media (prefers-color-scheme: light){
+    .inner-header-wrapper {
+      background: var(--background-white);
+    }
+  }
 </style>
 <script>
+
+  const logos = document.querySelectorAll(".contact-card-wrapper")
+  let blackLogos = []
+  let whiteLogos = []
+  for(let i = 0; i < logos.length; i++){
+    if(i < 4){
+      whiteLogos.push(logos[i])
+    } else {
+      blackLogos.push(logos[i])
+    }
+  }
+
+  function setColorScheme(scheme) {
+    switch(scheme){
+      case 'dark':
+        displayWhiteLogos()
+        break;
+      case 'light':
+        displayBlackLogos()
+        break;
+      default:
+        break;
+    }
+  }
+
+  function getPreferredColorScheme() {
+    if (window.matchMedia) {
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+    return 'dark';
+  }
+
+  function updateColorScheme(){
+      setColorScheme(getPreferredColorScheme());
+  }
+
+  if(window.matchMedia){
+    var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    colorSchemeQuery.addEventListener('change', updateColorScheme);
+  }
+
+  updateColorScheme();
+
+  function displayBlackLogos() {
+    console.log("change to black logos")
+    whiteLogos.forEach(logo => {
+      logo.classList.add("hide")
+    })
+    blackLogos.forEach(logo => {
+      logo.classList.remove("hide")
+    })
+  }
+
+  function displayWhiteLogos() {
+    console.log("change to white logos")
+    blackLogos.forEach(logo => {
+      logo.classList.add("hide")
+    })
+    whiteLogos.forEach(logo=> {
+      logo.classList.remove("hide")
+    })
+  }
+
   const contactsContainer = document.querySelector(".contacts-container")
   const contactElements = contactsContainer.children;
   const contactsPos = contactsContainer.offsetTop;
@@ -107,6 +198,10 @@ const mailLink = "mailto:js.wood206@gmail.com"
       contactElements[2].classList.add("pop-in", "pop-second");
       contactElements[3].classList.add("pop-in", "pop-third");
       contactElements[4].classList.add("pop-in", "pop-fourth");
+      contactElements[5].classList.add("pop-in", "pop-first");
+      contactElements[6].classList.add("pop-in", "pop-second");
+      contactElements[7].classList.add("pop-in", "pop-third");
+      contactElements[8].classList.add("pop-in", "pop-fourth");
     }
   }
 
