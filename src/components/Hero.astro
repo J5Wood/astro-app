@@ -38,7 +38,7 @@ import headshot from "../images/bust.png";
 
   .hero-image {
     background-color: var(--background-black);
-    margin: .35em ;
+    marsgin: .35em ;
     border-radius: 50%;
     height: 100%;
     aspect-ratio: 1 / 1;
@@ -112,6 +112,12 @@ import headshot from "../images/bust.png";
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @media (max-width: 300px){
+    .hero-component {
+      height: calc(100vh - 8em);
     }
   }
 
