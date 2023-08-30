@@ -1,8 +1,17 @@
 ---
 import resume from "../assets/resume.pdf"
+import blackBulb from "../images/black-bulb.png"
+import whiteBulb from "../images/white-bulb.png"
 ---
 
 <div class="nav">
+  <div class="toggle-button-wrapper">
+    <input type="checkbox" id="switch" />
+    <label for="switch">
+      <img class="switch-bulb" src={blackBulb}/>
+      <img class="switch-bulb" src={whiteBulb}/>
+    </label>
+  </div>
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
     <div class="nav-link-wrapper"><a class="nav-link" href="#about-section">About Me</a></div class="nav-link-wrapper">
@@ -17,10 +26,71 @@ import resume from "../assets/resume.pdf"
   </div>
 </div>
 <style >
+  .switch-bulb{
+    height: 75%;
+    width: 75%;
+  }
+
+  .toggle-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
+  }
+
+  input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background: rgb(var(--main-blue), .4);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+
+  label:after {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    background: var(--background-white);
+    border-radius: 90px;
+    transition: all 0.3s ease-out;
+  }
+
+  input:checked + label {
+    background: rgb(var(--main-green));
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 2.5px);
+    transform: translateX(-100%);
+    background: var(--background-black);
+  }
+
+  label:active:after {
+    width: 45px;
+  }
+
   .nav {
     display: grid;
-    grid-template: auto / 1fr auto 1fr;
+    grid-template: auto / 15vw 1fr auto 1fr;
     padding-top: 1em;
+    justify-items: center;
+    align-items: center;
   }
 
   .nav h1 {
@@ -38,7 +108,7 @@ import resume from "../assets/resume.pdf"
     align-items: center;
     text-align: center;
     gap: 1em;
-    grid-column: 3 / 4;
+    grid-column: 4 / 5;
   }
 
   .nav-link-wrapper{
