@@ -55,7 +55,7 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   }
   
   .inner-header-wrapper{
-    background-color: var(--background-black);
+    background-color: var(--main-background);
     width: 92%;
     height: 105%;
     display: flex;
@@ -121,8 +121,8 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
     animation: provide-fade .3s ease-out .02s forwards;
     z-index: 2;
     margin: -1px;
-    background: var(--background-black);
-    border: 1px solid var(--background-black);
+    background: var(--main-background);
+    border: 1px solid var(--main-background);
     border-radius: 1em;
   }
 
@@ -166,29 +166,12 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
       top: 5%;
     }
   }
+  
   @media (max-width: 300px){
     .enlarge{
       top: 1%;
     }
   }
-  @media (prefers-color-scheme: dark){
-    .enlarge::after{
-      background: var(--background-black);
-      border: 1px solid var(--background-black);
-    }
-    .inner-header-wrapper{
-      background-color: var(--background-black);
-    }
-  }
-  @media (prefers-color-scheme: light){
-    .enlarge::after{
-      background: var(--background-white);
-      border: 1px solid var(--background-white);
-    }
-    .inner-header-wrapper{
-      background-color: var(--background-white);
-    }
-  } 
 </style>
 <script>
   const projectsContainer = document.querySelector(".projects-container")
@@ -212,33 +195,24 @@ import {picSure, flavorTown, coffeeTalk} from "./ProjectData";
   projectCards.forEach(card => card.addEventListener("click", (e) => expandAndContractCard(e)))
 
   function expandAndContractCard(e){
-    const colorScheme = getPreferredColorScheme()
+    const lightSwitch = document.getElementById("switch")
     let githubButton
-    if(colorScheme === "dark"){
-      githubButton = e.currentTarget.children[0].children[0].children[4]
-    } else {
+    if(lightSwitch.checked){
       githubButton = e.currentTarget.children[0].children[0].children[5]
+    } else {
+      githubButton = e.currentTarget.children[0].children[0].children[4]
     }
     const featureList = e.currentTarget.children[0].children[0].children[3]
     if(e.currentTarget.classList.contains("enlarge")){
       featureList.classList.remove("show")
       e.currentTarget.classList.remove("enlarge")
+      githubButton.classList.add("remove")
       githubButton.classList.remove("show")
     } else {
       e.currentTarget.classList.add("enlarge")
       featureList.classList.add("show")
+      githubButton.classList.remove("hide")
       githubButton.classList.add("show")
     }
-  }
-
-  function getPreferredColorScheme() {
-    if (window.matchMedia) {
-      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-        return 'dark';
-      } else {
-        return 'light';
-      }
-    }
-    return 'dark';
   }
 </script>

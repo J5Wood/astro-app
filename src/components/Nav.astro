@@ -5,89 +5,30 @@ import whiteBulb from "../images/white-bulb.png"
 ---
 
 <div class="nav">
-  <div class="toggle-button-wrapper">
-    <input type="checkbox" id="switch" />
-    <label for="switch">
-      <img class="switch-bulb" src={blackBulb}/>
-      <img class="switch-bulb" src={whiteBulb}/>
-    </label>
-  </div>
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
     <div class="nav-link-wrapper"><a class="nav-link" href="#about-section">About Me</a></div class="nav-link-wrapper">
-    <div class="nav-link-wrapper"><a class="nav-link" href="#project-section">Projects</a></div>
-    <div class="nav-link-wrapper"><a class="nav-link" href="#contact-section">Contact</a></div>
-    <div class="nav-link-wrapper"><a class="nav-link" href={resume} target="_blank" download="jeremy/wood/resume">Resume</a></div>
-  </span>
-  <div class="animation-container">
-    <hr class="animated-1" />
-    <hr class="animated-2" />
-    <hr class="animated-3" />
-  </div>
+      <div class="nav-link-wrapper"><a class="nav-link" href="#project-section">Projects</a></div>
+      <div class="nav-link-wrapper"><a class="nav-link" href="#contact-section">Contact</a></div>
+      <div class="nav-link-wrapper"><a class="nav-link" href={resume} target="_blank" download="jeremy/wood/resume">Resume</a></div>
+    </span>
+    <div class="animation-container">
+      <hr class="animated-1" />
+      <hr class="animated-2" />
+      <hr class="animated-3" />
+    </div>
+    <div class="toggle-button-wrapper">
+      <input type="checkbox" id="switch" />
+      <label for="switch">
+        <img class="switch-bulb" src={whiteBulb}/>
+        <img class="switch-bulb" src={blackBulb}/>
+      </label>
+    </div>
 </div>
 <style >
-  .switch-bulb{
-    height: 75%;
-    width: 75%;
-  }
-
-  .toggle-button-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: fit-content;
-  }
-
-  input[type=checkbox]{
-    height: 0;
-    width: 0;
-    visibility: hidden;
-  }
-
-  label {
-    cursor: pointer;
-    width: 50px;
-    height: 25px;
-    background: rgb(var(--main-blue), .4);
-    display: block;
-    border-radius: 100px;
-    position: relative;
-    display: grid;
-    grid-template: auto / 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-  }
-
-  label:after {
-    content: '';
-    position: absolute;
-    top: 2.5px;
-    left: 2.5px;
-    width: 20px;
-    height: 20px;
-    background: var(--background-white);
-    border-radius: 90px;
-    transition: all 0.3s ease-out;
-  }
-
-  input:checked + label {
-    background: rgb(var(--main-green));
-  }
-
-  input:checked + label:after {
-    left: calc(100% - 2.5px);
-    transform: translateX(-100%);
-    background: var(--background-black);
-  }
-
-  label:active:after {
-    width: 45px;
-  }
-
   .nav {
     display: grid;
-    grid-template: auto / 15vw 1fr auto 1fr;
+    grid-template: auto 2em auto / 1fr auto 1fr;
     padding-top: 1em;
     justify-items: center;
     align-items: center;
@@ -130,16 +71,18 @@ import whiteBulb from "../images/white-bulb.png"
     height: 100%;
     width: 100%;
     text-decoration: none;
-    color: var(--text-white);
-    background: var(--background-black);
+    color: var(--main-text);
+    background: var(--main-background);
     border-radius: 2em;
     white-space: nowrap;
     cursor: pointer;
+    padding: .2em;
+    
   }
 
   #held-button{
-    background-color: rgb(var(--main-green));
-    color: var(--background-black);
+    background-color: rgb(var(--main-highlight));
+    color: var(--main-background);
   }
 
   hr {
@@ -147,6 +90,11 @@ import whiteBulb from "../images/white-bulb.png"
     border: none;
     right: 0;
     position: absolute;
+  }
+
+  .animation-container{
+    align-self: start;
+    padding-top: .5em;
   }
 
   hr.animated-1 {
@@ -194,6 +142,68 @@ import whiteBulb from "../images/white-bulb.png"
     }
   }
 
+  .toggle-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
+    grid-row: 3 / 4;
+    grid-column: 4 / 5;
+    justify-self: end;
+  }
+  
+  input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background: rgb(var(--main-green));
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  label:after {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    background: var(--main-background);
+    border-radius: 90px;
+    transition: all 0.3s ease-out;
+  }
+  
+  input:checked + label {
+    background: rgb(var(--main-blue));
+  }
+  
+  input:checked + label:after {
+    left: calc(100% - 2.5px);
+    transform: translateX(-100%);
+    background: var(--main-background);
+  }
+  
+  label:active:after {
+    width: 45px;
+  }
+  
+  .switch-bulb{
+    height: 75%;
+    width: 75%;
+  }
+
   @media (max-width: 450px) {
     .nav-links {
       display: grid;
@@ -213,19 +223,6 @@ import whiteBulb from "../images/white-bulb.png"
     gap: 1em;
     }
   }
-
-  @media (prefers-color-scheme: dark){
-    .nav-link{
-      color: var(--text-white);
-      background: var(--background-black);
-    }
-  }
-  @media (prefers-color-scheme: light){
-    .nav-link{
-      color: var(--text-black);
-      background: var(--background-white);
-    }
-  }
 </style>
 <script>
   const links = document.querySelectorAll(".nav-link")
@@ -234,7 +231,6 @@ import whiteBulb from "../images/white-bulb.png"
     link.addEventListener("mouseover",(e) => e.target.classList.add("highlight"))
     link.addEventListener("mousedown",(e) => {
       e.target.classList.remove("highlight");
-      // Set as ID for greater specificity
       e.target.setAttribute("id", "held-button");
     })
     link.addEventListener("mouseleave",(e) => {
@@ -243,4 +239,20 @@ import whiteBulb from "../images/white-bulb.png"
     })
   })
 
+  const lightSwitch = document.getElementById("switch")
+  if(window.matchMedia('(prefers-color-scheme: light)').matches){
+    lightSwitch.checked = true
+  }
+
+  function setColorScheme(e){
+    if(e.target.checked){
+      document.documentElement.classList.add("light")
+      document.documentElement.classList.remove("dark")
+    } else {
+      document.documentElement.classList.add("dark")
+      document.documentElement.classList.remove("light")
+    }
+  }
+
+  lightSwitch.addEventListener("click", setColorScheme)
 </script>

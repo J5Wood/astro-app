@@ -75,7 +75,7 @@ const mailLink = "mailto:js.wood206@gmail.com"
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--background-black);
+    background: var(--main-background);
     backface-visibility: hidden;
   }
 
@@ -120,18 +120,6 @@ const mailLink = "mailto:js.wood206@gmail.com"
   .hide {
     display: none;
   }
-
-  @media (prefers-color-scheme: dark){
-    .inner-header-wrapper {
-      background: var(--background-black);
-    }
-  }
-
-  @media (prefers-color-scheme: light){
-    .inner-header-wrapper {
-      background: var(--background-white);
-    }
-  }
 </style>
 <script>
   const logos = document.querySelectorAll(".contact-card-wrapper")
@@ -174,7 +162,7 @@ const mailLink = "mailto:js.wood206@gmail.com"
   }
 
   if(window.matchMedia){
-    var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     colorSchemeQuery.addEventListener('change', updateColorScheme);
   }
 
@@ -220,4 +208,19 @@ const mailLink = "mailto:js.wood206@gmail.com"
 
   window.addEventListener("onLoad", animateIn);
   window.addEventListener("scroll", animateIn);
+
+  const lightSwitch = document.getElementById("switch")
+  if(window.matchMedia('(prefers-color-scheme: light)').matches){
+    displayBlackLogos()
+  }
+
+  function changeLogos(e){
+    if(e.target.checked){
+      displayBlackLogos()
+    } else {
+      displayWhiteLogos() 
+    }
+  }
+
+  lightSwitch.addEventListener("click", changeLogos)
 </script>
