@@ -11,9 +11,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Jeremy Wood Portfolio" />
-    <!-- <meta name="viewport" content="width=device-width" /> -->
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1" />
-
     <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
   </head>
@@ -26,10 +24,32 @@ const { title } = Astro.props;
     --main-green: 0, 236, 181;
     --main-purple: 169, 87, 241;
     --main-blue: 16, 0, 236;
-    --background-black: #13151a;
-    --background-white: hsl(244,40%, 97%);
-    --text-black: #13151a;
-    --text-white:hsl(244,100%, 99%);
+    --main-background: #13151a;
+    --main-text:hsl(244,100%, 99%);
+  }
+  :root.dark{
+    --main-background: #13151a;
+    --main-text:hsl(244,100%, 99%);
+    --main-highlight: 0, 236, 181;
+  }
+  @media (prefers-color-scheme: dark){
+    :root {
+      --main-background: #13151a;
+      --main-text:hsl(244,100%, 99%);
+      --main-highlight: 0, 236, 181;
+    }
+  }
+  :root.light{
+    --main-background: hsl(244,40%, 97%);
+    --main-text: #13151a;
+    --main-highlight: 16, 0, 236;
+  }
+  @media (prefers-color-scheme: light){
+    :root {
+      --main-background: hsl(244,40%, 97%);
+      --main-text: #13151a;
+      --main-highlight: 16, 0, 236;
+    }
   }
   * {
     box-sizing: border-box;
@@ -37,22 +57,10 @@ const { title } = Astro.props;
   }
   html {
     font-family: system-ui, sans-serif;
-    background: var(--background-black);
-    color: var(--text-white);
+    background: var(--main-background);
+    color: var(--main-text);
     line-height: 125%;
     scroll-behavior: smooth;
-  }
-  @media (prefers-color-scheme: dark){
-    html {
-      color: var(--text-white);
-      background: var(--background-black);
-    }
-  }
-  @media (prefers-color-scheme: light){
-    html {
-      color: var(--text-black);
-      background: var(--background-white);
-    }
   }
   /* code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
