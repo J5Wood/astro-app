@@ -4,8 +4,8 @@ const { image, link } = Astro.props;
 
 <div class="contact-card">
   <a href={link}>
-  <img src={image}/>
-</a>
+    <img src={image.src} />
+  </a>
 </div>
 
 <style>
@@ -15,10 +15,10 @@ const { image, link } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: .9;
+    opacity: 0.9;
   }
 
-  .contact-card img{
+  .contact-card img {
     width: min(100%, 200px);
   }
 </style>

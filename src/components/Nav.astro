@@ -1,31 +1,44 @@
 ---
-import resume from "../assets/resume.pdf"
-import blackBulb from "../images/black-bulb.png"
-import whiteBulb from "../images/white-bulb.png"
+import resume from "../assets/resume.pdf";
+import blackBulb from "../assets/black-bulb.png";
+import whiteBulb from "../assets/white-bulb.png";
 ---
 
 <div class="nav">
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
-    <div class="nav-link-wrapper"><a class="nav-link" href="#about-section">About Me</a></div class="nav-link-wrapper">
-      <div class="nav-link-wrapper"><a class="nav-link" href="#project-section">Projects</a></div>
-      <div class="nav-link-wrapper"><a class="nav-link" href="#contact-section">Contact</a></div>
-      <div class="nav-link-wrapper"><a class="nav-link" href={resume} target="_blank" download="jeremy/wood/resume">Resume</a></div>
-    </span>
-    <div class="animation-container">
-      <hr class="animated-1" />
-      <hr class="animated-2" />
-      <hr class="animated-3" />
+    <div class="nav-link-wrapper">
+      <a class="nav-link" href="#about-section">About Me</a>
     </div>
-    <div class="toggle-button-wrapper">
-      <input type="checkbox" id="switch" />
-      <label for="switch">
-        <img class="switch-bulb" src={whiteBulb}/>
-        <img class="switch-bulb" src={blackBulb}/>
-      </label>
+    <div class="nav-link-wrapper">
+      <a class="nav-link" href="#project-section">Projects</a>
     </div>
+    <div class="nav-link-wrapper">
+      <a class="nav-link" href="#contact-section">Contact</a>
+    </div>
+    <div class="nav-link-wrapper">
+      <a
+        class="nav-link"
+        href={resume}
+        target="_blank"
+        download="jeremy/wood/resume">Resume</a
+      >
+    </div>
+  </span>
+  <div class="animation-container">
+    <hr class="animated-1" />
+    <hr class="animated-2" />
+    <hr class="animated-3" />
+  </div>
+  <div class="toggle-button-wrapper">
+    <input type="checkbox" id="switch" />
+    <label for="switch">
+      <img class="switch-bulb" src={whiteBulb.src} />
+      <img class="switch-bulb" src={blackBulb.src} />
+    </label>
+  </div>
 </div>
-<style >
+<style>
   .nav {
     display: grid;
     grid-template: auto 2em auto / 1fr auto auto;
@@ -54,22 +67,32 @@ import whiteBulb from "../images/white-bulb.png"
     grid-column: 4 / 5;
   }
 
-  .nav-link-wrapper{
+  .nav-link-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 2em;
-    background: radial-gradient(circle farthest-corner at 0% 0%, rgba(169, 87, 241, 1) 0%, rgba(0, 236, 181, .5) 75%, rgba(16, 0, 236, .5) 100%);
-    padding: .1em;
+    background: radial-gradient(
+      circle farthest-corner at 0% 0%,
+      rgba(169, 87, 241, 1) 0%,
+      rgba(0, 236, 181, 0.5) 75%,
+      rgba(16, 0, 236, 0.5) 100%
+    );
+    padding: 0.1em;
     transition: all 1s ease-in;
   }
 
-  .nav-link-wrapper:hover{
-    transform: translate(-1px,-1px);
-    background: radial-gradient(circle farthest-corner at 0% 0%, rgba(169, 87, 241, 1) 0%, rgba(0, 236, 181, 1) 75%, rgba(16, 0, 236, 1) 100%);
+  .nav-link-wrapper:hover {
+    transform: translate(-1px, -1px);
+    background: radial-gradient(
+      circle farthest-corner at 0% 0%,
+      rgba(169, 87, 241, 1) 0%,
+      rgba(0, 236, 181, 1) 75%,
+      rgba(16, 0, 236, 1) 100%
+    );
   }
 
-  .nav-link{
+  .nav-link {
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -78,11 +101,10 @@ import whiteBulb from "../images/white-bulb.png"
     border-radius: 2em;
     white-space: nowrap;
     cursor: pointer;
-    padding: .2em;
-    
+    padding: 0.2em;
   }
 
-  #held-button{
+  #held-button {
     background-color: rgb(var(--main-highlight));
     color: var(--main-background);
   }
@@ -94,13 +116,13 @@ import whiteBulb from "../images/white-bulb.png"
     position: absolute;
   }
 
-  .animation-container{
+  .animation-container {
     align-self: start;
-    padding-top: .5em;
+    padding-top: 0.5em;
   }
 
   hr.animated-1 {
-    height: .65em;
+    height: 0.65em;
     animation: expand-3 2s ease-in-out 0.4s forwards;
     background-color: rgb(var(--main-green));
   }
@@ -144,7 +166,7 @@ import whiteBulb from "../images/white-bulb.png"
     }
   }
 
-  .toggle-button-wrapper{
+  .toggle-button-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,13 +176,13 @@ import whiteBulb from "../images/white-bulb.png"
     grid-column: 4 / 5;
     justify-self: end;
   }
-  
-  input[type=checkbox]{
+
+  input[type="checkbox"] {
     height: 0;
     width: 0;
     visibility: hidden;
   }
-  
+
   label {
     cursor: pointer;
     width: 50px;
@@ -174,9 +196,9 @@ import whiteBulb from "../images/white-bulb.png"
     align-items: center;
     justify-items: center;
   }
-  
+
   label:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 2.5px;
     left: 2.5px;
@@ -186,22 +208,22 @@ import whiteBulb from "../images/white-bulb.png"
     border-radius: 90px;
     transition: all 0.3s ease-out;
   }
-  
+
   input:checked + label {
     background: rgb(var(--main-blue));
   }
-  
+
   input:checked + label:after {
     left: calc(100% - 2.5px);
     transform: translateX(-100%);
     background: var(--main-background);
   }
-  
+
   label:active:after {
     width: 45px;
   }
-  
-  .switch-bulb{
+
+  .switch-bulb {
     height: 75%;
     width: 75%;
   }
@@ -209,52 +231,54 @@ import whiteBulb from "../images/white-bulb.png"
   @media (max-width: 450px) {
     .nav-links {
       display: grid;
-      grid-template: auto auto / 1fr 1fr ;
+      grid-template: auto auto / 1fr 1fr;
       align-items: center;
       text-align: center;
       gap: 1em;
     }
   }
 
-  @media (max-width: 300px){
-    .nav-links{
-    display: grid;
-    grid-template: auto auto auto auto/ 1fr ;
-    align-items: center;
-    text-align: center;
-    gap: 1em;
+  @media (max-width: 300px) {
+    .nav-links {
+      display: grid;
+      grid-template: auto auto auto auto/ 1fr;
+      align-items: center;
+      text-align: center;
+      gap: 1em;
     }
   }
 </style>
 <script>
-  const links = document.querySelectorAll(".nav-link")
+  const links = document.querySelectorAll(".nav-link");
 
-  links.forEach(link => {
-    link.addEventListener("mouseover",(e) => e.target.classList.add("highlight"))
-    link.addEventListener("mousedown",(e) => {
+  links.forEach((link) => {
+    link.addEventListener("mouseover", (e) =>
+      e.target.classList.add("highlight")
+    );
+    link.addEventListener("mousedown", (e) => {
       e.target.classList.remove("highlight");
       e.target.setAttribute("id", "held-button");
-    })
-    link.addEventListener("mouseleave",(e) => {
+    });
+    link.addEventListener("mouseleave", (e) => {
       e.target.classList.remove("highlight");
       e.target.removeAttribute("id", "held-button");
-    })
-  })
+    });
+  });
 
-  const lightSwitch = document.getElementById("switch")
-  if(window.matchMedia('(prefers-color-scheme: light)').matches){
-    lightSwitch.checked = true
+  const lightSwitch = document.getElementById("switch");
+  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    lightSwitch.checked = true;
   }
 
-  function setColorScheme(e){
-    if(e.target.checked){
-      document.documentElement.classList.add("light")
-      document.documentElement.classList.remove("dark")
+  function setColorScheme(e) {
+    if (e.target.checked) {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
     } else {
-      document.documentElement.classList.add("dark")
-      document.documentElement.classList.remove("light")
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     }
   }
 
-  lightSwitch.addEventListener("click", setColorScheme)
+  lightSwitch.addEventListener("click", setColorScheme);
 </script>
