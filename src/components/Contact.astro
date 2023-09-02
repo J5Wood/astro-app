@@ -1,18 +1,18 @@
 ---
 import ContactCard from "./ContactCard.astro";
-import ghWhite from "../images/github-white.png"
-import mediumWhite from "../images/medium-white.png"
-import liWhite from "../images/li-white.png"
-import mailWhite from "../images/mail-white.png"
-import ghBlack from "../images/github-black.png"
-import mediumBlack from "../images/medium-black.png"
-import liBlack from "../images/li-black.png"
-import mailBlack from "../images/mail-black.png"
+import ghWhite from "../assets/github-white.png";
+import mediumWhite from "../assets/medium-white.png";
+import liWhite from "../assets/li-white.png";
+import mailWhite from "../assets/mail-white.png";
+import ghBlack from "../assets/github-black.png";
+import mediumBlack from "../assets/medium-black.png";
+import liBlack from "../assets/li-black.png";
+import mailBlack from "../assets/mail-black.png";
 
-const ghLink = "https://github.com/J5Wood"
-const liLink = "https://www.linkedin.com/in/jeremyw00d"
-const mediumLink = "http://jwood206.medium.com/"
-const mailLink = "mailto:js.wood206@gmail.com"
+const ghLink = "https://github.com/J5Wood";
+const liLink = "https://www.linkedin.com/in/jeremyw00d";
+const mediumLink = "http://jwood206.medium.com/";
+const mailLink = "mailto:js.wood206@gmail.com";
 ---
 
 <div id="contact-section" class="contacts-container">
@@ -22,40 +22,40 @@ const mailLink = "mailto:js.wood206@gmail.com"
     </div>
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={liWhite} link={liLink}/>
+    <ContactCard image={liWhite} link={liLink} />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={ghWhite} link={ghLink}/>
+    <ContactCard image={ghWhite} link={ghLink} />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={mediumWhite} link={mediumLink}/>
+    <ContactCard image={mediumWhite} link={mediumLink} />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={mailWhite} link={mailLink}/>
+    <ContactCard image={mailWhite} link={mailLink} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={liBlack} link={liLink}/>
+    <ContactCard image={liBlack} link={liLink} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={ghBlack} link={ghLink}/>
+    <ContactCard image={ghBlack} link={ghLink} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={mediumBlack} link={mediumLink}/>
+    <ContactCard image={mediumBlack} link={mediumLink} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={mailBlack} link={mailLink}/>
+    <ContactCard image={mailBlack} link={mailLink} />
   </div>
 </div>
 <style>
   .contacts-container {
     height: 70vh;
     display: grid;
-    grid-template:  14% 28% 56% 2%/ 1fr 1fr 1fr 1fr;
+    grid-template: 14% 28% 56% 2%/ 1fr 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
   }
-  
-  .outer-header-wrapper{
+
+  .outer-header-wrapper {
     grid-column: 1 / 5;
     grid-row: 2 / 3;
     display: flex;
@@ -63,12 +63,21 @@ const mailLink = "mailto:js.wood206@gmail.com"
     align-items: center;
     transform: rotateY(180deg);
     backface-visibility: hidden;
-    transition: all .7s ease-in; 
-    background: radial-gradient(ellipse farthest-corner at 0% 0%, rgba(0, 236, 181, 0.9) 15%, rgba(16, 0, 236, 0.2) 25%, rgba(0, 236, 181, 0.75) 50%, rgba(16, 0, 236, 1) 69%, rgba(169, 87, 241, .8) 72%, rgba(16, 0, 236, 0.6) 80%, rgba(0, 236, 181, 1) 95%);
+    transition: all 0.7s ease-in;
+    background: radial-gradient(
+      ellipse farthest-corner at 0% 0%,
+      rgba(0, 236, 181, 0.9) 15%,
+      rgba(16, 0, 236, 0.2) 25%,
+      rgba(0, 236, 181, 0.75) 50%,
+      rgba(16, 0, 236, 1) 69%,
+      rgba(169, 87, 241, 0.8) 72%,
+      rgba(16, 0, 236, 0.6) 80%,
+      rgba(0, 236, 181, 1) 95%
+    );
     width: 100%;
     height: 4em;
   }
-  
+
   .inner-header-wrapper {
     width: 100%;
     height: 90%;
@@ -79,12 +88,12 @@ const mailLink = "mailto:js.wood206@gmail.com"
     backface-visibility: hidden;
   }
 
-  .contact-header{
+  .contact-header {
     transform: rotateY(180deg);
     backface-visibility: hidden;
-    transition: all .8s ease-in;
+    transition: all 0.8s ease-in;
   }
-  
+
   .contact-card-wrapper {
     width: 100%;
     height: 100%;
@@ -122,24 +131,24 @@ const mailLink = "mailto:js.wood206@gmail.com"
   }
 </style>
 <script>
-  const logos = document.querySelectorAll(".contact-card-wrapper")
-  let blackLogos = []
-  let whiteLogos = []
-  for(let i = 0; i < logos.length; i++){
-    if(i < 4){
-      whiteLogos.push(logos[i])
+  const logos = document.querySelectorAll(".contact-card-wrapper");
+  let blackLogos = [];
+  let whiteLogos = [];
+  for (let i = 0; i < logos.length; i++) {
+    if (i < 4) {
+      whiteLogos.push(logos[i]);
     } else {
-      blackLogos.push(logos[i])
+      blackLogos.push(logos[i]);
     }
   }
 
   function setColorScheme(scheme) {
-    switch(scheme){
-      case 'dark':
-        displayWhiteLogos()
+    switch (scheme) {
+      case "dark":
+        displayWhiteLogos();
         break;
-      case 'light':
-        displayBlackLogos()
+      case "light":
+        displayBlackLogos();
         break;
       default:
         break;
@@ -148,50 +157,50 @@ const mailLink = "mailto:js.wood206@gmail.com"
 
   function getPreferredColorScheme() {
     if (window.matchMedia) {
-      if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-        return 'dark';
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
       } else {
-        return 'light';
+        return "light";
       }
     }
-    return 'dark';
+    return "dark";
   }
 
-  function updateColorScheme(){
-      setColorScheme(getPreferredColorScheme());
+  function updateColorScheme() {
+    setColorScheme(getPreferredColorScheme());
   }
 
-  if(window.matchMedia){
-    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    colorSchemeQuery.addEventListener('change', updateColorScheme);
+  if (window.matchMedia) {
+    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    colorSchemeQuery.addEventListener("change", updateColorScheme);
   }
 
   updateColorScheme();
 
   function displayBlackLogos() {
-    whiteLogos.forEach(logo => {
-      logo.classList.add("hide")
-    })
-    blackLogos.forEach(logo => {
-      logo.classList.remove("hide")
-    })
+    whiteLogos.forEach((logo) => {
+      logo.classList.add("hide");
+    });
+    blackLogos.forEach((logo) => {
+      logo.classList.remove("hide");
+    });
   }
 
   function displayWhiteLogos() {
-    blackLogos.forEach(logo => {
-      logo.classList.add("hide")
-    })
-    whiteLogos.forEach(logo=> {
-      logo.classList.remove("hide")
-    })
+    blackLogos.forEach((logo) => {
+      logo.classList.add("hide");
+    });
+    whiteLogos.forEach((logo) => {
+      logo.classList.remove("hide");
+    });
   }
 
-  const contactsContainer = document.querySelector(".contacts-container")
+  const contactsContainer = document.querySelector(".contacts-container");
   const contactElements = contactsContainer.children;
   const contactsPos = contactsContainer.offsetTop;
-  
+
   function animateIn() {
-    let midpoint = window.scrollY + (window.innerHeight / 2)
+    let midpoint = window.scrollY + window.innerHeight / 2;
     if (contactsPos < midpoint) {
       contactElements[0].classList.add("pop-in");
       contactElements[0].children[0].children[0].classList.add("pop-in");
@@ -209,18 +218,18 @@ const mailLink = "mailto:js.wood206@gmail.com"
   window.addEventListener("onLoad", animateIn);
   window.addEventListener("scroll", animateIn);
 
-  const lightSwitch = document.getElementById("switch")
-  if(window.matchMedia('(prefers-color-scheme: light)').matches){
-    displayBlackLogos()
+  const lightSwitch = document.getElementById("switch");
+  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    displayBlackLogos();
   }
 
-  function changeLogos(e){
-    if(e.target.checked){
-      displayBlackLogos()
+  function changeLogos(e) {
+    if (e.target.checked) {
+      displayBlackLogos();
     } else {
-      displayWhiteLogos() 
+      displayWhiteLogos();
     }
   }
 
-  lightSwitch.addEventListener("click", changeLogos)
+  lightSwitch.addEventListener("click", changeLogos);
 </script>
