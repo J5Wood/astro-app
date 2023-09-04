@@ -1,7 +1,6 @@
 ---
 import whiteGithubLogo from "../assets/github-white.png";
 import blackGithubLogo from "../assets/github-black.png";
-import { Image } from "astro:assets";
 
 const { data } = Astro.props;
 const { name, link, imgSrc, imgAlt, description, features } = data;
@@ -10,20 +9,30 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
 <div class="card-wrapper">
   <div class="card">
     <h2 class="card-heading">{name}</h2>
-    <Image class="project-image" src={imgSrc} alt={imgAlt} />
+    <img class="project-image" src={imgSrc.src} alt={imgAlt} />
     <p class="card-description">{description}</p>
     <ul class="feature-list">
       {features.map((feature) => <li>{feature}</li>)}
     </ul>
     <a href={link} class="github-button">
-      <Image class="github-logo" src={whiteGithubLogo} alt="github-logo" />
+      <img class="github-logo" src={whiteGithubLogo.src} />
     </a>
     <a href={link} class="github-button">
-      <Image class="github-logo" src={blackGithubLogo} alt="github-logo" />
+      <img class="github-logo" src={blackGithubLogo.src} />
     </a>
   </div>
 </div>
 <style>
+  .github-logo {
+    width: 100%;
+  }
+  .github-button {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 4em;
+    display: none;
+  }
   .card-wrapper {
     width: 100%;
     height: 100%;
@@ -92,7 +101,6 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
 
   .project-image {
     width: min(85%, 250px);
-    height: auto;
     aspect-ratio: 1 / 0.8;
     border-radius: 1em;
   }
@@ -115,19 +123,6 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
     align-items: center;
     padding-left: 15%;
     display: none;
-  }
-
-  .github-button {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-    width: 4em;
-    display: none;
-  }
-
-  .github-logo {
-    width: 100%;
-    height: auto;
   }
 
   .show {
