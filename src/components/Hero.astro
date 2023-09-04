@@ -1,10 +1,11 @@
 ---
 import headshot from "../assets/bust.png";
+import { Image } from "astro:assets";
 ---
 
 <div class="hero-component">
   <div class="hero-image-wrapper">
-    <img class="hero-image" src={headshot.src} />
+    <Image class="hero-image" src={headshot} alt="Jeremy Wood's headshot." />
   </div>
   <div class="arrow-container">
     <div class="arrow-wrapper">

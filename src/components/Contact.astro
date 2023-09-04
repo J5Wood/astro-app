@@ -13,6 +13,11 @@ const ghLink = "https://github.com/J5Wood";
 const liLink = "https://www.linkedin.com/in/jeremyw00d";
 const mediumLink = "http://jwood206.medium.com/";
 const mailLink = "mailto:js.wood206@gmail.com";
+
+const ghAltText = "Github logo.";
+const liAltText = "LinkedIn logo.";
+const mediumAltText = "Medium logo.";
+const mailAltText = "Email icon.";
 ---
 
 <div id="contact-section" class="contacts-container">
@@ -22,28 +27,36 @@ const mailLink = "mailto:js.wood206@gmail.com";
     </div>
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={liWhite} link={liLink} />
+    <ContactCard image={liWhite} link={liLink} altText={liAltText} />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={ghWhite} link={ghLink} />
+    <ContactCard image={ghWhite} link={ghLink} altText={ghAltText} />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={mediumWhite} link={mediumLink} />
+    <ContactCard
+      image={mediumWhite}
+      link={mediumLink}
+      altText={mediumAltText}
+    />
   </div>
   <div class="contact-card-wrapper">
-    <ContactCard image={mailWhite} link={mailLink} />
+    <ContactCard image={mailWhite} link={mailLink} altText={mailAltText} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={liBlack} link={liLink} />
+    <ContactCard image={liBlack} link={liLink} altText={liAltText} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={ghBlack} link={ghLink} />
+    <ContactCard image={ghBlack} link={ghLink} altText={ghAltText} />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={mediumBlack} link={mediumLink} />
+    <ContactCard
+      image={mediumBlack}
+      link={mediumLink}
+      altText={mediumAltText}
+    />
   </div>
   <div class="contact-card-wrapper hide">
-    <ContactCard image={mailBlack} link={mailLink} />
+    <ContactCard image={mailBlack} link={mailLink} altText={mailAltText} />
   </div>
 </div>
 <style>
