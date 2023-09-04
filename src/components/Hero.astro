@@ -19,12 +19,10 @@ import { Image } from "astro:assets";
     display: grid;
     flex-flow: column nowrap;
     justify-items: center;
-    align-items: end;
-    grid-template: 75% 25% / 100%;
-    height: 100vh;
-    min-height: 100vh;
+    align-items: center;
+    grid-template: 85% 15% / 100%;
+    height: calc(100vh - 4em);
     overflow-x: hidden;
-    width: 100vw;
   }
 
   .hero-image-wrapper {
@@ -32,7 +30,7 @@ import { Image } from "astro:assets";
     justify-content: center;
     align-items: center;
     max-width: 75%;
-    max-height: 75%;
+    max-height: 70%;
     border-radius: 50%;
     transform: translateX(200%) rotate(180deg);
     animation: rollin 3s forwards 0.8s;
@@ -78,7 +76,7 @@ import { Image } from "astro:assets";
     justify-content: center;
     overflow: hidden;
     opacity: 0;
-    animation: arrow-flash 3s linear 3s forwards;
+    animation: arrow-flash 3s linear 3.5s forwards;
   }
 
   .arrow-wrapper {
@@ -87,13 +85,13 @@ import { Image } from "astro:assets";
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
   }
 
   .arrow {
     width: 100%;
     height: 0.3em;
-    background-color: var(--main-text);
+    background-color: var(--main-background);
   }
 
   .left {
