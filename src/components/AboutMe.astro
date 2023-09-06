@@ -3,7 +3,9 @@
 ---
 
 <div id="about-section" class="about-me-container">
-  <h2 class="about-me-heading">About Me</h2>
+  <div class="about-me-heading-wrapper">
+    <h2 class="about-me-heading">About Me</h2>
+  </div>
   <div class="about-me-content-wrapper">
     <p class="about-me-content">
       Thanks for stopping by! I'm a full stack web developer, problem solver,
@@ -28,35 +30,96 @@
     position: relative;
   }
 
-  .about-me-heading {
+  .about-me-heading-wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     align-self: flex-start;
-    padding-left: 20%;
     grid-column-start: 2;
     grid-row-start: 2;
     width: 100%;
-    height: min(5em, 75%);
-    border-radius: 1em 0em 0em 1em;
-    border: inset rgb(var(--main-blue));
-    border-width: 0.25em 0 0.25em 0.25em;
+    height: min(6em, 75%);
+    overflow: hidden;
+    padding: 0.2em 0 0.2em 0.2em;
+    border-radius: 1.5em 0em 0em 1.5em;
     position: relative;
     left: 110%;
     transition: left 0.4s ease-in-out;
+  }
+
+  .about-me-heading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20%;
+    border-radius: 1em 0em 0em 1em;
+    border-width: 0.25em 0 0.25em 0.25em;
+    position: relative;
     background: var(--main-background);
   }
 
   .about-me-heading::before {
     content: "";
     position: absolute;
-    top: -0.35em;
-    left: -0.35em;
-    bottom: -0.35em;
+    width: 200vw;
+    height: 200vw;
+    left: -25vw;
     right: 0;
     border-radius: 1em 0em 0em 1em;
-    background-color: rgb(var(--main-green));
+    background: linear-gradient(
+      90deg,
+      rgba(var(--main-green), 1) 4%,
+      rgba(var(--main-green), 1) 14%,
+      rgba(var(--main-purple), 0.8) 18%,
+      rgba(var(--main-green), 1) 45%,
+      rgba(var(--main-purple), 0.5) 50%,
+      rgba(var(--main-green), 1) 56%,
+      rgba(var(--main-purple), 0.8) 70%,
+      rgba(var(--main-green), 1) 80%,
+      rgba(var(--main-purple), 0.5) 90%,
+      rgba(var(--main-green), 1) 96%
+    );
     z-index: -1;
+    animation: spin 20s linear infinite;
+  }
+
+  .about-me-heading::after {
+    content: "";
+    position: absolute;
+    width: 200vw;
+    height: 200vw;
+    left: -25vw;
+    right: 0;
+    border-radius: 1em 0em 0em 1em;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--main-blue), 0.7) 4%,
+      rgba(var(--main-blue), 0.7) 14%,
+      rgba(0, 0, 0, 0) 18%,
+      rgba(var(--main-blue), 0.7) 45%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(var(--main-blue), 0.7) 56%,
+      rgba(0, 0, 0, 0) 70%,
+      rgba(var(--main-blue), 0.7) 80%,
+      rgba(0, 0, 0, 0) 90%,
+      rgba(var(--main-blue), 0.7) 96%
+    );
+    z-index: -1;
+    animation: spin 20s linear infinite reverse;
+  }
+
+  @keyframes spin {
+    33% {
+      rotate: 120deg;
+    }
+    66% {
+      rotate: 240deg;
+    }
+    100% {
+      rotate: 360deg;
+    }
   }
 
   .about-me-content-wrapper {
@@ -67,48 +130,36 @@
     top: 100%;
     opacity: 0;
     transition: all 1.5s cubic-bezier(0.6, 0.3, 0.3, 1.01);
-    z-index: -1;
+    z-index: 1;
   }
 
   .about-me-content {
     padding: 2em;
     height: 100%;
     width: 100%;
-    border-style: solid;
-    border-width: 0.25em;
-    border-color: rgb(var(--main-purple), 0.7);
-    border-radius: 1em;
     position: relative;
     line-height: 1.75em;
     text-indent: 2em;
     font-size: large;
     background: var(--main-background);
-    z-index: -1;
+    box-shadow:
+      0 0 0.1em 5px var(--main-background),
+      0 0 0 10px rgb(var(--main-green), 0.7),
+      0 0 0.3em 15px var(--main-background),
+      0 0 0 20px rgb(var(--main-blue), 0.7),
+      0 0 0.4em 25px var(--main-background),
+      0 0 0 30px rgb(var(--main-purple), 0.7);
+    border-radius: 0.5em;
   }
 
-  .about-me-content::before {
-    content: "";
-    margin: -1em;
-    position: absolute;
-    top: 0.2em;
-    bottom: 0.2em;
-    right: 0.2em;
-    left: 0.2em;
-    border-radius: 1em;
-    border: 5px solid rgb(var(--main-green), 0.7);
-  }
-
-  .about-me-content::after {
-    content: "";
-    margin: -1em;
-    position: absolute;
-    top: -0.4em;
-    bottom: -0.4em;
-    right: -0.4em;
-    left: -0.4em;
-    border-radius: 1em;
-    border: 5px solid rgb(var(--main-blue), 0.5);
-    z-index: -1;
+  .about-me-content:hover {
+    box-shadow:
+      0 0 0.1em 5px var(--main-background),
+      0 0 0em 10px rgb(var(--main-green), 1),
+      0 0 0.3em 15px var(--main-background),
+      0 0 0em 20px rgb(var(--main-blue), 1),
+      0 0 0.4em 25px var(--main-background),
+      0 0 0em 30px rgb(var(--main-purple), 1);
   }
 
   .gradient-container {
@@ -121,6 +172,7 @@
       var(--main-background) 0%,
       rgba(19, 21, 26, 0) 100%
     );
+    z-index: 100;
   }
 
   .slide-in {
@@ -148,7 +200,7 @@
 <script>
   const container = document.querySelector(".about-me-container");
   const containerPosition = container.offsetTop;
-  const aboutHeader = document.querySelector(".about-me-heading");
+  const aboutHeader = document.querySelector(".about-me-heading-wrapper");
   const aboutContent = document.querySelector(".about-me-content-wrapper");
 
   function animateIn() {
