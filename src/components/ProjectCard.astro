@@ -14,11 +14,19 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
     <ul class="feature-list">
       {features.map((feature) => <li>{feature}</li>)}
     </ul>
-    <a href={link} class="github-button">
-      <img class="github-logo" src={whiteGithubLogo.src} />
+    <a
+      href={link}
+      class="github-button"
+      aria-label={`Navigate to the Github page for ${name}.`}
+    >
+      <img class="github-logo" src={whiteGithubLogo.src} alt="Github Logo." />
     </a>
-    <a href={link} class="github-button">
-      <img class="github-logo" src={blackGithubLogo.src} />
+    <a
+      href={link}
+      class="github-button"
+      aria-label={`Navigate to the Github page for ${name}.`}
+    >
+      <img class="github-logo" src={blackGithubLogo.src} alt="Github Logo." />
     </a>
   </div>
 </div>

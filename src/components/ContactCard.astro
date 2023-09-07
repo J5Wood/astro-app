@@ -1,16 +1,17 @@
 ---
-const { image, link } = Astro.props;
+const { image, link, altText } = Astro.props;
 ---
 
 <div class="contact-card">
-  <a href={link}>
-    <img src={image.src} />
+  <a href={link} aria-label={`Navigate to ${altText}`}>
+    <img src={image.src} alt={`${altText}Logo`} />
   </a>
 </div>
 
 <style>
   .contact-card {
     width: 80%;
+    height: auto;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;

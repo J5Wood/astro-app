@@ -6,13 +6,13 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Jeremy Wood's Portfolio Site." />
-    <meta name="robots" content="follow, index, max-image-preview:large"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1" />
+    <meta name="robots" content="follow, index, max-image-preview:large" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
   </head>
@@ -26,28 +26,28 @@ const { title } = Astro.props;
     --main-purple: 169, 87, 241;
     --main-blue: 16, 0, 236;
     --main-background: #13151a;
-    --main-text:hsl(244,100%, 99%);
+    --main-text: hsl(244, 100%, 99%);
   }
-  :root.dark{
+  :root.dark {
     --main-background: #13151a;
-    --main-text:hsl(244,100%, 99%);
+    --main-text: hsl(244, 100%, 99%);
     --main-highlight: 0, 236, 181;
   }
-  @media (prefers-color-scheme: dark){
+  @media (prefers-color-scheme: dark) {
     :root {
       --main-background: #13151a;
-      --main-text:hsl(244,100%, 99%);
+      --main-text: hsl(244, 100%, 99%);
       --main-highlight: 0, 236, 181;
     }
   }
-  :root.light{
-    --main-background: hsl(244,40%, 97%);
+  :root.light {
+    --main-background: hsl(244, 40%, 97%);
     --main-text: #13151a;
     --main-highlight: 16, 0, 236;
   }
-  @media (prefers-color-scheme: light){
+  @media (prefers-color-scheme: light) {
     :root {
-      --main-background: hsl(244,40%, 97%);
+      --main-background: hsl(244, 40%, 97%);
       --main-text: #13151a;
       --main-highlight: 16, 0, 236;
     }
@@ -55,7 +55,15 @@ const { title } = Astro.props;
   * {
     box-sizing: border-box;
     margin: 0;
-    font-family: "Hiragino kaku gothic pro", Menlo, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    font-family:
+      "Hiragino kaku gothic pro",
+      Menlo,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
   }
   html {
     font-family: system-ui, sans-serif;
