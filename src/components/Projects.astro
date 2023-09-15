@@ -9,9 +9,15 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
       <h2 class="project-header">Projects</h2>
     </div>
   </div>
-  <div class="project-wrapper"><ProjectCard data={coffeeTalk} /></div>
-  <div class="project-wrapper card-two"><ProjectCard data={flavorTown} /></div>
-  <div class="project-wrapper card-three"><ProjectCard data={picSure} /></div>
+  <div class="project-wrapper" tabindex="0">
+    <ProjectCard data={coffeeTalk} />
+  </div>
+  <div class="project-wrapper card-two" tabindex="0">
+    <ProjectCard data={flavorTown} />
+  </div>
+  <div class="project-wrapper card-three" tabindex="0">
+    <ProjectCard data={picSure} />
+  </div>
 </div>
 <style>
   .projects-container {
@@ -188,9 +194,18 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     projectElements[2],
     projectElements[3],
   ];
-  projectCards.forEach((card) =>
-    card.addEventListener("click", (e) => expandAndContractCard(e))
-  );
+  projectCards.forEach((card) => {
+    card.addEventListener("click", (e) => expandAndContractCard(e));
+    card.addEventListener("keydown", (e) => {
+      if (e.keyCode === 13) {
+        expandAndContractCard(e);
+      }
+      if (e.keyCode === 27 && e.target.classList.contains("enlarge")) {
+        console.log(e.target);
+        expandAndContractCard(e);
+      }
+    });
+  });
 
   function expandAndContractCard(e) {
     const lightSwitch = document.getElementById("switch");

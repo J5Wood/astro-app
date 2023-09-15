@@ -3,7 +3,7 @@ const { image, link, altText } = Astro.props;
 ---
 
 <div class="contact-card">
-  <a href={link} aria-label={`Navigate to ${altText}`}>
+  <a href={link} target="_blank" aria-label={`Navigate to ${altText}`}>
     <img src={image.src} alt={`${altText}Logo`} />
   </a>
 </div>
