@@ -4,7 +4,7 @@ import blackBulb from "../assets/black-bulb.png";
 import whiteBulb from "../assets/white-bulb.png";
 ---
 
-<div class="nav">
+<nav class="nav">
   <h1>Jeremy Wood</h1>
   <span class="nav-links">
     <div class="nav-link-wrapper">
@@ -38,7 +38,7 @@ import whiteBulb from "../assets/white-bulb.png";
       <img class="switch-bulb" src={blackBulb.src} alt="Light mode switch." />
     </label>
   </div>
-</div>
+</nav>
 <style>
   .nav {
     display: grid;
@@ -56,7 +56,7 @@ import whiteBulb from "../assets/white-bulb.png";
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 5px 10px 10px;
     line-height: 1em;
     font-family: "EB Garamond", STFangsong, Beirut, serif, sans-serif;
     font-size: 3em;
@@ -69,6 +69,7 @@ import whiteBulb from "../assets/white-bulb.png";
     text-align: center;
     gap: 1em;
     grid-column: 4 / 5;
+    padding: 0 5px;
   }
 
   .nav-link-wrapper {
@@ -239,6 +240,7 @@ import whiteBulb from "../assets/white-bulb.png";
     grid-row: 3 / 4;
     grid-column: 4 / 5;
     justify-self: end;
+    padding-right: 0.5em;
   }
 
   input[type="checkbox"] {

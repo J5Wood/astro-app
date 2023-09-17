@@ -1,15 +1,15 @@
 ---
+
 ---
 
-<div class="footer">
+<footer class="footer">
   <div class="footer-content-wrapper">
-    <div class="footer-background">
-    </div>
+    <div class="footer-background"></div>
     <p>Jeremy Wood - 2023</p>
   </div>
-</div>
+</footer>
 <style>
-  .footer {
+  footer {
     height: 4em;
     display: flex;
     justify-content: center;
@@ -17,7 +17,7 @@
     padding: 5em 0 2.25em 0;
   }
 
-  .footer-content-wrapper{
+  .footer-content-wrapper {
     height: 2em;
     width: 100%;
     display: flex;
@@ -26,25 +26,34 @@
     overflow: hidden;
   }
 
-  .footer-background{
+  .footer-background {
     width: 200%;
     height: 200vh;
-    background: radial-gradient(ellipse farthest-corner at 25% 0%, rgba(169, 87, 241, 1) 0%, rgba(19, 21, 26, 1) 17%, rgba(169, 87, 241, 1) 34%, rgba(19, 21, 26, 1) 50%, rgba(169, 87, 241, 1) 66%, rgba(19, 21, 26, 1) 83%, rgba(169, 87, 241, 1) 100%);
+    background: radial-gradient(
+      ellipse farthest-corner at 25% 0%,
+      rgb(var(--main-purple)) 0%,
+      var(--main-background) 17%,
+      rgb(var(--main-purple)) 34%,
+      var(--main-background) 50%,
+      rgb(var(--main-purple)) 66%,
+      var(--main-background) 83%,
+      rgb(var(--main-purple)) 100%
+    );
     animation: spin-background 20s linear infinite;
     transform: rotate(0deg);
   }
 
   .footer p {
-    background: var(--main-background) ;
+    background: var(--main-background);
     height: 1.5em;
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
   }
 
-  @keyframes spin-background{
+  @keyframes spin-background {
     100% {
       transform: rotate(360deg);
     }

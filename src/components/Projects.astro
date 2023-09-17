@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard.astro";
 import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
 ---
 
-<div id="project-section" class="projects-container">
+<section id="project-section" class="projects-container">
   <div class="outer-header-wrapper">
     <div class="inner-header-wrapper">
       <h2 class="project-header">Projects</h2>
@@ -18,7 +18,7 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
   <div class="project-wrapper card-three" tabindex="0">
     <ProjectCard data={picSure} />
   </div>
-</div>
+</section>
 <style>
   .projects-container {
     min-height: 80vh;
