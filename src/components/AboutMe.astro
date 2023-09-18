@@ -17,11 +17,11 @@
     </p>
     <button class="about-me-light">
       <div class="switch-bead"></div>
-      <div class="switch-bead bead-2"></div>
-      <div class="switch-bead bead-3"></div>
-      <div class="switch-bead bead-4"></div>
-      <div class="switch-bead bead-5"></div>
-      <div class="switch-bead bead-6"></div>
+      <div class="switch-bead"></div>
+      <div class="switch-bead"></div>
+      <div class="switch-bead"></div>
+      <div class="switch-bead"></div>
+      <div class="switch-bead"></div>
     </button>
   </div>
   <div class="gradient-container"></div>
@@ -131,7 +131,7 @@
   }
 
   .about-me-content-wrapper {
-    margin: 0 4em 0 4em;
+    margin: 0 4em 4em 4em;
     grid-row-start: 3;
     grid-column: 1/ 3;
     position: relative;
@@ -159,37 +159,12 @@
   }
 
   .switch-bead {
-    height: 0.9em;
-    width: 0.9em;
+    height: 0.7em;
+    width: 0.7em;
     background-color: var(--main-text);
     border: 1px solid var(--main-background);
     border-radius: 50%;
     position: relative;
-  }
-  
-  .bead-2 {
-    width: 0.9em;
-    height: 0.9em;
-  }
-  
-  .bead-3 {
-    width: 0.8em;
-    height: 0.8em;
-  }
-  
-  .bead-4 {
-    width: 0.7em;
-    height: 0.7em;
-  }
-  
-  .bead-5 {
-    width: 0.7em;
-    height: 0.7em;
-  }
-  
-  .bead-6 {
-    width: 0.7em;
-    height: 0.7em;
   }
 
   .about-me-content {
@@ -203,11 +178,11 @@
     background: var(--main-background);
     box-shadow:
       0 0 0.1em 5px var(--main-background),
-      0 0 0 10px rgb(var(--main-green), 0.7),
+      0 0 0 10px rgb(var(--main-green), 0.5),
       0 0 0.3em 15px var(--main-background),
-      0 0 0 20px rgb(var(--main-blue), 0.7),
+      0 0 0 20px rgb(var(--main-blue), 0.5),
       0 0 0.4em 25px var(--main-background),
-      0 0 0 30px rgb(var(--main-purple), 0.7);
+      0 0 0 30px rgb(var(--main-purple), 0.5);
     border-radius: 0.5em;
   }
 
@@ -220,16 +195,6 @@
       0 0 0.4em 25px var(--main-background),
       0 0 0em 30px rgb(var(--main-purple), 1);
   }
-  /* 
-  .about-me-content:hover {
-    box-shadow:
-      0 0 0.1em 5px var(--main-background),
-      0 0 0em 10px rgb(var(--main-green), 1),
-      0 0 0.3em 15px var(--main-background),
-      0 0 0em 20px rgb(var(--main-blue), 1),
-      0 0 0.4em 25px var(--main-background),
-      0 0 0em 30px rgb(var(--main-purple), 1);
-  } */
 
   .gradient-container {
     grid-row: 4 / 5;
@@ -267,6 +232,7 @@
   }
 </style>
 <script>
+  import {beadAnimation0, beadAnimation1, beadAnimation2, beadAnimation3, beadAnimation4, beadAnimation5, contentBlockAnimation} from "./AboutMeAnimations"
 
   const container = document.querySelector(".about-me-container");
   const containerPosition = container.offsetTop;
@@ -277,64 +243,9 @@
   const aboutContent = aboutContentWrapper.children[0];
   const lightSwitch = document.querySelector(".about-me-light");
 
-  const animation0 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "6px", offset: .1},
-    {left: "0px",top: "-6px", offset: .3, easing: "ease-out"},
-    {left: "0px",top: "0px", offset: .5, easing: "ease-in"},
-    {left: "0px",top: "-2px", offset: .7, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
-  const animation1 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "6px", offset: .1},
-    {left: "0px",top: "-6px", offset: .4, easing: "ease-out"},
-    {left: "0px",top: "0px", offset: .7, easing: "ease-in"},
-    {left: "0px",top: "-2px", offset: .9, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
-  const animation2 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "7px", offset: .1},
-    {left: "4px",top: "-6px", offset: .3, easing: "ease-out"},
-    {left: "0px",top: "1", offset: .5, easing: "ease-in"},
-    {left: "-2px",top: "-3px", offset: .7, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
-  const animation3 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "8px", offset: .1},
-    {left: "0px",top: "-7px", offset: .3, easing: "ease-out"},
-    {left: "0px",top: "3", offset: .5, easing: "ease-in"},
-    {left: "0px",top: "-4px", offset: .7, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
-  const animation4 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "9px", offset: .1},
-    {left: "-4px",top: "-8px", offset: .3, easing: "ease-out"},
-    {left: "0px",top: "3", offset: .5, easing: "ease-in"},
-    {left: "2px",top: "-4px", offset: .7, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
-  const animation5 = [
-    {left: "0px",top: "0px",},
-    {left: "0px",top: "10px", offset: .1},
-    {left: "-6px",top: "-9px", offset: .3, easing: "ease-out"},
-    {left: "0px",top: "3", offset: .5, easing: "ease-in"},
-    {left: "3px",top: "-4px", offset: .7, easing: "ease-out"},
-    {left: "0px",top: "0px", easing: "ease-out"},
-  ]
-
   lightSwitch.addEventListener("click", turnOnLight);
 
-  function turnOnLight(e) {
-
+  function turnOnLight() {
     if (aboutContent.classList.contains("light-up")) {
       animateSwitch()
       aboutContent.classList.remove("light-up");
@@ -345,12 +256,13 @@
   }
 
   function animateSwitch(){
-    lightSwitch.children[0].animate(animation0, 1500)
-    lightSwitch.children[1].animate(animation1, 1500)
-    lightSwitch.children[2].animate(animation2, 1500)
-    lightSwitch.children[3].animate(animation3, 1500)
-    lightSwitch.children[4].animate(animation4, 1500)
-    lightSwitch.children[5].animate(animation5, 1500)
+    aboutContentWrapper.animate(contentBlockAnimation, 1000)
+    lightSwitch.children[0].animate(beadAnimation0, 1000)
+    lightSwitch.children[1].animate(beadAnimation1, 1000)
+    lightSwitch.children[2].animate(beadAnimation2, 1000)
+    lightSwitch.children[3].animate(beadAnimation3, 1000)
+    lightSwitch.children[4].animate(beadAnimation4, 1000)
+    lightSwitch.children[5].animate(beadAnimation5, 1000)
   }
 
   function animateIn() {
