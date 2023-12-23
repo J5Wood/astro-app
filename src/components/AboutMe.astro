@@ -8,12 +8,14 @@
   </div>
   <div class="about-me-content-wrapper">
     <p class="about-me-content">
-      Thanks for stopping by! I'm a full stack web developer, problem solver,
-      and builder of responsive applications. I love learning, and I'm always
-      looking for something new to try. This is why I love the building for the
-      web. While every day brings new challenges, it also brings new tools to
-      help improve our lives. When I'm not coding, I enjoy travelling and fixing
-      motorcycles!
+      Thanks for stopping by!<br /> I'm a full stack web developer, problem
+      solver, traveler, motorcycle enthusiast, and builder of responsive
+      applications. I love learning, and I'm always looking for something new to
+      try. That's probably why I find building for the web so exciting. As the
+      web and the world around us becomes more complex, we are constanty faced
+      with new challenges. But we are also given new ideas, and tools to help
+      improve our lives. If you think I can help improve yours, feel free to
+      reach out!
     </p>
     <button class="about-me-light">
       <div class="switch-bead"></div>
@@ -226,13 +228,21 @@
   }
   @media (max-width: 320px) {
     .about-me-content {
-      padding: 0em;``
+      padding: 0em;
       text-indent: 0.5em;
     }
   }
 </style>
 <script>
-  import {beadAnimation0, beadAnimation1, beadAnimation2, beadAnimation3, beadAnimation4, beadAnimation5, contentBlockAnimation} from "./AboutMeAnimations"
+  import {
+    beadAnimation0,
+    beadAnimation1,
+    beadAnimation2,
+    beadAnimation3,
+    beadAnimation4,
+    beadAnimation5,
+    contentBlockAnimation,
+  } from "./AboutMeAnimations";
 
   const container = document.querySelector(".about-me-container");
   const containerPosition = container.offsetTop;
@@ -247,22 +257,22 @@
 
   function turnOnLight() {
     if (aboutContent.classList.contains("light-up")) {
-      animateSwitch()
+      animateSwitch();
       aboutContent.classList.remove("light-up");
     } else {
-      animateSwitch()
+      animateSwitch();
       aboutContent.classList.add("light-up");
     }
   }
 
-  function animateSwitch(){
-    aboutContentWrapper.animate(contentBlockAnimation, 1000)
-    lightSwitch.children[0].animate(beadAnimation0, 1000)
-    lightSwitch.children[1].animate(beadAnimation1, 1000)
-    lightSwitch.children[2].animate(beadAnimation2, 1000)
-    lightSwitch.children[3].animate(beadAnimation3, 1000)
-    lightSwitch.children[4].animate(beadAnimation4, 1000)
-    lightSwitch.children[5].animate(beadAnimation5, 1000)
+  function animateSwitch() {
+    aboutContentWrapper.animate(contentBlockAnimation, 1000);
+    lightSwitch.children[0].animate(beadAnimation0, 1000);
+    lightSwitch.children[1].animate(beadAnimation1, 1000);
+    lightSwitch.children[2].animate(beadAnimation2, 1000);
+    lightSwitch.children[3].animate(beadAnimation3, 1000);
+    lightSwitch.children[4].animate(beadAnimation4, 1000);
+    lightSwitch.children[5].animate(beadAnimation5, 1000);
   }
 
   function animateIn() {

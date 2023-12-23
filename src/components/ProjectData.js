@@ -1,6 +1,21 @@
 import picSurePhoto from "../assets/pic-sure.png";
 import flavorTownPhoto from "../assets/flavor-town.png";
 import coffeeTalkPhoto from "../assets/coffee-talk.png";
+import guhradientPhoto from "../assets/guhradient.png";
+
+export const guhradient = {
+  name: "gUHradient",
+  imgSrc: guhradientPhoto,
+  imgAlt: "Preview of guhradient app",
+  description: "Tool for designing and previewing CSS gradients.",
+  features: [
+    "Built using only HTML, CSS, and vanilla JavaScript",
+    "Can easily switch between radial, linear, and even conic gradients",
+    "Integrates jscolor package to make changing colors a breeze",
+  ],
+  link: "https://github.com/J5Wood/CSSGradients",
+  url: "https://guhradient.com",
+};
 
 export const picSure = {
   name: "Pic-Sure",
@@ -13,7 +28,9 @@ export const picSure = {
     "Utilizes Active Storage for image storage",
   ],
   link: "https://github.com/J5Wood/pic-sure",
+  url: null,
 };
+
 export const flavorTown = {
   name: "Flavor Town",
   imgSrc: flavorTownPhoto,
@@ -25,7 +42,9 @@ export const flavorTown = {
     "Incorporates resource filtering by city and restaurant style",
   ],
   link: "https://github.com/J5Wood/Flavor-Town",
+  url: null,
 };
+
 export const coffeeTalk = {
   name: "Coffee Talk",
   imgSrc: coffeeTalkPhoto,
@@ -37,4 +56,5 @@ export const coffeeTalk = {
     "Follows RESTful conventions for all resources, including nested routes.",
   ],
   link: "https://github.com/J5Wood/coffee-talk",
+  url: null,
 };

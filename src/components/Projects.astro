@@ -1,6 +1,6 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
-import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
+import { guhradient, picSure, flavorTown, coffeeTalk } from "./ProjectData";
 ---
 
 <section id="project-section" class="projects-container">
@@ -10,20 +10,23 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     </div>
   </div>
   <div class="project-wrapper" tabindex="0">
-    <ProjectCard data={coffeeTalk} />
+    <ProjectCard data={guhradient} />
   </div>
   <div class="project-wrapper card-two" tabindex="0">
-    <ProjectCard data={flavorTown} />
+    <ProjectCard data={picSure} />
   </div>
   <div class="project-wrapper card-three" tabindex="0">
-    <ProjectCard data={picSure} />
+    <ProjectCard data={flavorTown} />
+  </div>
+  <div class="project-wrapper card-four" tabindex="0">
+    <ProjectCard data={coffeeTalk} />
   </div>
 </section>
 <style>
   .projects-container {
     min-height: 80vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 12em auto;
     align-items: center;
     justify-items: center;
@@ -32,7 +35,7 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
   }
 
   .outer-header-wrapper {
-    grid-column: 1/4;
+    grid-column: 1/5;
     transition: width 0.5s ease-in;
     background: linear-gradient(
       90deg,
@@ -84,7 +87,7 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
   }
 
   .project-wrapper {
-    width: 80%;
+    width: max(150px, 80%);
     height: 20em;
     display: flex;
     align-items: center;
@@ -106,6 +109,11 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     grid-column: 3 / 4;
   }
 
+  .card-four {
+    transition-delay: 1s;
+    grid-column: 4 / 5;
+  }
+
   .pop-in {
     opacity: 1;
   }
@@ -116,11 +124,14 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
 
   .enlarge {
     position: fixed;
-    top: 10%;
+    top: 0%;
+    bottom: 0%;
+    margin: auto;
+
     max-width: 60%;
+    height: min(100vh, 500px);
     background-color: black;
     border-radius: 1em;
-    height: max-content;
     z-index: 2;
   }
 
@@ -135,10 +146,10 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     z-index: -1;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 600px) {
     .projects-container {
       grid-template-columns: 1fr;
-      grid-template-rows: 12em auto auto auto;
+      grid-template-rows: 12em auto auto auto auto;
       gap: 1em;
     }
 
@@ -160,8 +171,14 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
       grid-column: 1 / 2;
     }
 
+    .card-four {
+      transition-delay: 1s;
+      grid-column: 1 / 2;
+    }
+
     .enlarge {
-      top: 5%;
+      height: max(75%, 650px);
+      max-width: 75%;
     }
   }
 
@@ -183,6 +200,7 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
       projectElements[1].classList.add("pop-in");
       projectElements[2].classList.add("pop-in");
       projectElements[3].classList.add("pop-in");
+      projectElements[4].classList.add("pop-in");
     }
   }
 
@@ -193,6 +211,7 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     projectElements[1],
     projectElements[2],
     projectElements[3],
+    projectElements[4],
   ];
   projectCards.forEach((card) => {
     card.addEventListener("click", (e) => expandAndContractCard(e));
@@ -211,21 +230,26 @@ import { picSure, flavorTown, coffeeTalk } from "./ProjectData";
     const lightSwitch = document.getElementById("switch");
     let githubButton;
     if (lightSwitch.checked) {
-      githubButton = e.currentTarget.children[0].children[0].children[5];
+      githubButton = e.currentTarget.children[0].children[0].children[6];
     } else {
-      githubButton = e.currentTarget.children[0].children[0].children[4];
+      githubButton = e.currentTarget.children[0].children[0].children[5];
     }
-    const featureList = e.currentTarget.children[0].children[0].children[3];
+    const featureList = e.currentTarget.children[0].children[0].children[4];
+    const link = e.currentTarget.children[0].children[0].children[1];
     if (e.currentTarget.classList.contains("enlarge")) {
-      featureList.classList.remove("show");
       e.currentTarget.classList.remove("enlarge");
-      githubButton.classList.add("remove");
+      featureList.classList.remove("show");
+      githubButton.classList.add("hide");
       githubButton.classList.remove("show");
+      link.classList.remove("show");
+      link.classList.add("hide");
     } else {
       e.currentTarget.classList.add("enlarge");
       featureList.classList.add("show");
       githubButton.classList.remove("hide");
       githubButton.classList.add("show");
+      link.classList.remove("hide");
+      link.classList.add("show");
     }
   }
 </script>

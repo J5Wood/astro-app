@@ -3,12 +3,26 @@ import whiteGithubLogo from "../assets/github-white.png";
 import blackGithubLogo from "../assets/github-black.png";
 
 const { data } = Astro.props;
-const { name, link, imgSrc, imgAlt, description, features } = data;
+const { name, link, imgSrc, imgAlt, description, features, url } = data;
 ---
 
 <div class="card-wrapper">
   <div class="card">
     <h2 class="card-heading">{name}</h2>
+    {
+      url ? (
+        <a
+          class="card-link hide"
+          href={url}
+          aria-label="Official guhradient website"
+          target="_blank"
+        >
+          Try It Out
+        </a>
+      ) : (
+        <span />
+      )
+    }
     <img class="project-image" src={imgSrc.src} alt={imgAlt} />
     <p class="card-description">{description}</p>
     <ul class="feature-list">
@@ -18,6 +32,7 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
       href={link}
       class="github-button"
       aria-label={`Navigate to the Github page for ${name}.`}
+      target="_blank"
     >
       <img class="github-logo" src={whiteGithubLogo.src} alt="Github Logo." />
     </a>
@@ -25,6 +40,7 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
       href={link}
       class="github-button"
       aria-label={`Navigate to the Github page for ${name}.`}
+      target="_blank"
     >
       <img class="github-logo" src={blackGithubLogo.src} alt="Github Logo." />
     </a>
@@ -65,7 +81,7 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
     );
     position: absolute;
     content: "";
-    width: 300%;
+    width: 370%;
     height: 300%;
     animation: spin-background 10s linear infinite;
   }
@@ -97,6 +113,8 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
     justify-items: center;
     position: relative;
     cursor: pointer;
+    container-type: size;
+    overflow-y: scroll;
   }
 
   .card-heading {
@@ -104,7 +122,11 @@ const { name, link, imgSrc, imgAlt, description, features } = data;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100%;
+    height: 1em;
+  }
+
+  .card-link {
+    display: none;
   }
 
   .project-image {
