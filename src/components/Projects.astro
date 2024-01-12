@@ -230,26 +230,33 @@ import { guhradient, picSure, flavorTown, coffeeTalk } from "./ProjectData";
     const lightSwitch = document.getElementById("switch");
     let githubButton;
     if (lightSwitch.checked) {
-      githubButton = e.currentTarget.children[0].children[0].children[6];
-    } else {
       githubButton = e.currentTarget.children[0].children[0].children[5];
+    } else {
+      githubButton = e.currentTarget.children[0].children[0].children[4];
     }
-    const featureList = e.currentTarget.children[0].children[0].children[4];
-    const link = e.currentTarget.children[0].children[0].children[1];
+    const featureList = e.currentTarget.children[0].children[0].children[3];
+    const link = e.currentTarget.children[0].children[0].children[6]
+      ? e.currentTarget.children[0].children[0].children[6]
+      : null;
+
     if (e.currentTarget.classList.contains("enlarge")) {
       e.currentTarget.classList.remove("enlarge");
       featureList.classList.remove("show");
       githubButton.classList.add("hide");
       githubButton.classList.remove("show");
-      link.classList.remove("show");
-      link.classList.add("hide");
+      if (link) {
+        link.classList.remove("show");
+        link.classList.add("hide");
+      }
     } else {
       e.currentTarget.classList.add("enlarge");
       featureList.classList.add("show");
       githubButton.classList.remove("hide");
       githubButton.classList.add("show");
-      link.classList.remove("hide");
-      link.classList.add("show");
+      if (link) {
+        link.classList.remove("hide");
+        link.classList.add("show");
+      }
     }
   }
 </script>

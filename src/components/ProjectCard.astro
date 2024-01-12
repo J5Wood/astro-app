@@ -9,20 +9,6 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
 <div class="card-wrapper">
   <div class="card">
     <h2 class="card-heading">{name}</h2>
-    {
-      url ? (
-        <a
-          class="card-link hide"
-          href={url}
-          aria-label="Official guhradient website"
-          target="_blank"
-        >
-          Try It Out
-        </a>
-      ) : (
-        <span />
-      )
-    }
     <img class="project-image" src={imgSrc.src} alt={imgAlt} />
     <p class="card-description">{description}</p>
     <ul class="feature-list">
@@ -34,7 +20,11 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
       aria-label={`Navigate to the Github page for ${name}.`}
       target="_blank"
     >
-      <img class="github-logo" src={whiteGithubLogo.src} alt="Github Logo." />
+      <img
+        class="white github-logo"
+        src={whiteGithubLogo.src}
+        alt="Github Logo."
+      />
     </a>
     <a
       href={link}
@@ -42,8 +32,24 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
       aria-label={`Navigate to the Github page for ${name}.`}
       target="_blank"
     >
-      <img class="github-logo" src={blackGithubLogo.src} alt="Github Logo." />
+      <img
+        class="black github-logo"
+        src={blackGithubLogo.src}
+        alt="Github Logo."
+      />
     </a>
+    {
+      url ? (
+        <a
+          class="card-link hide"
+          href={url}
+          aria-label="Official guhradient website"
+          target="_blank"
+        >
+          Try It Out
+        </a>
+      ) : null
+    }
   </div>
 </div>
 <style>
@@ -102,7 +108,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template: auto auto auto auto / 1fr;
+    grid-template: auto auto auto / 1fr;
     align-items: space-around;
     flex-flow: column nowrap;
     background: var(--main-background);
@@ -114,7 +120,6 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     position: relative;
     cursor: pointer;
     container-type: size;
-    overflow-y: scroll;
   }
 
   .card-heading {
