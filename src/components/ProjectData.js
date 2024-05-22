@@ -2,6 +2,21 @@ import picSurePhoto from "../assets/pic-sure.png";
 import flavorTownPhoto from "../assets/flavor-town.png";
 import coffeeTalkPhoto from "../assets/coffee-talk.png";
 import guhradientPhoto from "../assets/guhradient.png";
+import picSharePhoto from "../assets/pic-share.png";
+
+export const picShare = {
+  name: "Pic Share",
+  imgSrc: picSharePhoto,
+  imgAlt: "Preview of Pic Share app",
+  description: "Pic share is a social app for sharing images",
+  features: [
+    "Built using Next.JS, utilizing server rendering where possible for performance",
+    "Uses Supabase for it's managed Postgres DB, as well as for user creation, verification, authentication, and credential security.",
+    "Uses Cloudinary for image storage and hosting.",
+  ],
+  link: "https://github.com/J5Wood/pic-share",
+  url: null,
+};
 
 export const guhradient = {
   name: "gUHradient",

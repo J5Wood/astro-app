@@ -7,7 +7,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
 ---
 
 <div class="card-wrapper">
-  <div class="card">
+  <div class="card minimized-pointer">
     <h2 class="card-heading">{name}</h2>
     <img class="project-image" src={imgSrc.src} alt={imgAlt} />
     <p class="card-description">{description}</p>
@@ -56,6 +56,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
   .github-logo {
     width: 100%;
   }
+
   .github-button {
     position: absolute;
     top: 1em;
@@ -63,6 +64,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     width: 4em;
     display: none;
   }
+
   .card-wrapper {
     width: 100%;
     height: 100%;
@@ -118,8 +120,8 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     align-items: center;
     justify-items: center;
     position: relative;
-    cursor: pointer;
     container-type: size;
+    overflow-y: scroll;
   }
 
   .card-heading {
@@ -147,6 +149,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow-y: scroll;
   }
 
   .feature-list {
