@@ -7,7 +7,7 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
 ---
 
 <div class="card-wrapper">
-  <div class="card minimized-pointer">
+  <div class="card">
     <h2 class="card-heading">{name}</h2>
     <img class="project-image" src={imgSrc.src} alt={imgAlt} />
     <p class="card-description">{description}</p>
@@ -149,7 +149,6 @@ const { name, link, imgSrc, imgAlt, description, features, url } = data;
     justify-content: center;
     align-items: center;
     height: 100%;
-    overflow-y: scroll;
   }
 
   .feature-list {
