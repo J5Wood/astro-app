@@ -19,7 +19,7 @@ export const picShare = {
 };
 
 export const guhradient = {
-  name: "gUHradient",
+  name: "Guhradient",
   imgSrc: guhradientPhoto,
   imgAlt: "Preview of guhradient app",
   description: "Tool for designing and previewing CSS gradients.",

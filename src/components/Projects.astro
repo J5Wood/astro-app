@@ -147,6 +147,7 @@ import {
     margin: auto;
     max-width: 60%;
     height: min(100vh, 500px);
+    max-height: 100vh;
     background-color: black;
     border-radius: 1em;
     z-index: 2;
@@ -270,7 +271,6 @@ import {
         expandAndContractCard(e);
       }
       if (e.keyCode === 27 && e.target.classList.contains("enlarge")) {
-        console.log(e.target);
         expandAndContractCard(e);
       }
     });
@@ -291,8 +291,7 @@ import {
 
     if (e.currentTarget.classList.contains("enlarge")) {
       e.currentTarget.classList.remove("enlarge");
-      console.log(e.currentTarget);
-      e.currentTarget.classList.add("minimized-pointer");
+      e.currentTarget.classList.add("minimized");
       featureList.classList.remove("show");
       githubButton.classList.add("hide");
       githubButton.classList.remove("show");
@@ -302,7 +301,7 @@ import {
       }
     } else {
       e.currentTarget.classList.add("enlarge");
-      e.currentTarget.classList.remove("minimized-pointer");
+      e.currentTarget.classList.remove("minimized");
       featureList.classList.add("show");
       githubButton.classList.remove("hide");
       githubButton.classList.add("show");
