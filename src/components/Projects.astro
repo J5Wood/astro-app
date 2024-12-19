@@ -238,7 +238,9 @@ import {
   }
 </style>
 <script>
-  const projectsContainer = document.querySelector(".projects-container");
+  const projectsContainer = document.querySelector(
+    ".projects-container"
+  ) as HTMLElement;
   const projectPosition = projectsContainer.offsetTop;
   const projectElements = projectsContainer.children;
 
@@ -266,18 +268,19 @@ import {
   ];
   projectCards.forEach((card) => {
     card.addEventListener("click", (e) => expandAndContractCard(e));
-    card.addEventListener("keydown", (e) => {
-      if (e.keyCode === 13) {
+    card.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
         expandAndContractCard(e);
       }
-      if (e.keyCode === 27 && e.target.classList.contains("enlarge")) {
+
+      if (e.key === "Escape" && card.classList.contains("enlarge")) {
         expandAndContractCard(e);
       }
     });
   });
 
   function expandAndContractCard(e) {
-    const lightSwitch = document.getElementById("switch");
+    const lightSwitch = document.getElementById("switch") as HTMLInputElement;
     let githubButton;
     if (lightSwitch.checked) {
       githubButton = e.currentTarget.children[0].children[0].children[5];

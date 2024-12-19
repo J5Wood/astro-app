@@ -195,7 +195,9 @@ const mailLink = "mailto:js.wood206@gmail.com";
     });
   }
 
-  const contactsContainer = document.querySelector(".contacts-container");
+  const contactsContainer = document.querySelector(
+    ".contacts-container"
+  ) as HTMLElement;
   const contactElements = contactsContainer.children;
   const contactsPos = contactsContainer.offsetTop;
 

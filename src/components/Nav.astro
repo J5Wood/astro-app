@@ -318,20 +318,24 @@ import whiteBulb from "../assets/white-bulb.png";
   const links = document.querySelectorAll(".nav-link");
 
   links.forEach((link) => {
-    link.addEventListener("mouseover", (e) =>
-      e.target.classList.add("highlight")
-    );
+    link.addEventListener("mouseover", (e) => {
+      const linkElement = e.target as HTMLLinkElement;
+      linkElement.classList.add("highlight");
+    });
     link.addEventListener("mousedown", (e) => {
-      e.target.classList.remove("highlight");
-      e.target.setAttribute("id", "held-button");
+      const linkElement = e.target as HTMLLinkElement;
+      linkElement.classList.remove("highlight");
+      linkElement.setAttribute("id", "held-button");
     });
     link.addEventListener("mouseleave", (e) => {
-      e.target.classList.remove("highlight");
-      e.target.removeAttribute("id", "held-button");
+      const linkElement = e.target as HTMLLinkElement;
+      linkElement.classList.remove("highlight");
+      linkElement.removeAttribute("id");
+      linkElement.removeAttribute("held-button");
     });
   });
 
-  const lightSwitch = document.getElementById("switch");
+  const lightSwitch = document.getElementById("switch") as HTMLInputElement;
   if (window.matchMedia("(prefers-color-scheme: light)").matches) {
     lightSwitch.checked = true;
   }
