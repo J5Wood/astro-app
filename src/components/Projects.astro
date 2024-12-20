@@ -15,32 +15,33 @@ import {
       <h2 class="project-header">Projects</h2>
     </div>
   </div>
-  <div class="project-wrapper minimized" tabindex="0">
-    <ProjectCard data={picShare} />
-  </div>
-  <div class="project-wrapper card-two minimized" tabindex="0">
-    <ProjectCard data={guhradient} />
-  </div>
-  <div class="project-wrapper card-three minimized" tabindex="0">
-    <ProjectCard data={picSure} />
-  </div>
-  <div class="project-wrapper card-four minimized" tabindex="0">
-    <ProjectCard data={flavorTown} />
-  </div>
-  <div class="project-wrapper card-five minimized" tabindex="0">
-    <ProjectCard data={coffeeTalk} />
+  <div class="card-container">
+    <div class="project-wrapper minimized" tabindex="0">
+      <ProjectCard data={picShare} />
+    </div>
+    <div class="project-wrapper card-two minimized" tabindex="0">
+      <ProjectCard data={guhradient} />
+    </div>
+    <div class="project-wrapper card-three minimized" tabindex="0">
+      <ProjectCard data={picSure} />
+    </div>
+    <div class="project-wrapper card-four minimized" tabindex="0">
+      <ProjectCard data={flavorTown} />
+    </div>
+    <div class="project-wrapper card-five minimized" tabindex="0">
+      <ProjectCard data={coffeeTalk} />
+    </div>
   </div>
 </section>
 <style>
   .projects-container {
-    min-height: 80vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 12em auto;
+    display: flex;
+    flex-flow: column nowrap;
     align-items: center;
     justify-items: center;
     overflow: hidden;
     z-index: 100;
+    gap: 2em;
   }
 
   .outer-header-wrapper {
@@ -93,6 +94,16 @@ import {
       0% 90%
     );
     text-align: center;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-row: auto;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    gap: 1em;
   }
 
   .project-wrapper {
@@ -154,26 +165,9 @@ import {
     cursor: default;
   }
 
-  .enlarge::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgb(0, 0, 0, 0.4);
-    z-index: -1;
-  }
-
   @media (max-width: 825px) {
-    .projects-container {
+    .card-container {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-rows: 12em auto auto;
-      gap: 1em;
-    }
-
-    .outer-header-wrapper {
-      grid-column: 3 / 5;
     }
 
     .project-wrapper {
@@ -196,14 +190,8 @@ import {
   }
 
   @media (max-width: 600px) {
-    .projects-container {
+    .card-container {
       grid-template-columns: 1fr;
-      grid-template-rows: 12em auto auto auto auto auto;
-      gap: 1em;
-    }
-
-    .outer-header-wrapper {
-      grid-column: 1 / 2;
     }
 
     .project-wrapper {
@@ -242,76 +230,110 @@ import {
     ".projects-container"
   ) as HTMLElement;
   const projectPosition = projectsContainer.offsetTop;
-  const projectElements = projectsContainer.children;
+  const projectHeader = projectsContainer.children[0];
+  const projectCards = [...projectsContainer.children[1].children];
+  const lightDarkModeSwitch = document.getElementById(
+    "switch"
+  ) as HTMLInputElement;
+  const firstContactCard = document.querySelector(".contact-card").children[0];
+  const pullStringButton = document.querySelector(".about-me-light");
 
   function animateIn() {
     const midpoint = window.scrollY + window.innerHeight / 2;
     if (projectPosition < midpoint) {
-      projectElements[0].classList.add("expand");
-      projectElements[1].classList.add("pop-in");
-      projectElements[2].classList.add("pop-in");
-      projectElements[3].classList.add("pop-in");
-      projectElements[4].classList.add("pop-in");
-      projectElements[5].classList.add("pop-in");
+      projectHeader.classList.add("expand");
+      projectCards[0].classList.add("pop-in");
+      projectCards[1].classList.add("pop-in");
+      projectCards[2].classList.add("pop-in");
+      projectCards[3].classList.add("pop-in");
+      projectCards[4].classList.add("pop-in");
     }
   }
 
   window.addEventListener("onLoad", animateIn);
   window.addEventListener("scroll", animateIn);
+  window.addEventListener("click", (e) => {
+    closeAlreadyOpenCards(e);
+  });
 
-  const projectCards = [
-    projectElements[1],
-    projectElements[2],
-    projectElements[3],
-    projectElements[4],
-    projectElements[5],
-  ];
   projectCards.forEach((card) => {
-    card.addEventListener("click", (e) => expandAndContractCard(e));
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+      expandAndContractCard(e);
+    });
     card.addEventListener("keydown", (e: KeyboardEvent) => {
+      e.stopPropagation();
       if (e.key === "Enter") {
         expandAndContractCard(e);
       }
-
       if (e.key === "Escape" && card.classList.contains("enlarge")) {
         expandAndContractCard(e);
       }
     });
+    card.addEventListener("keyup", (e: KeyboardEvent) => {
+      if (e.key === "Tab" && !card.classList.contains("enlarge")) {
+        closeAlreadyOpenCards(e);
+      }
+    });
   });
+  // Close cards when tabbing away from projects
+  pullStringButton.addEventListener("focus", (e) => closeAlreadyOpenCards(e));
+  firstContactCard.addEventListener("focus", (e) => closeAlreadyOpenCards(e));
+
+  function getCardComponents(card: HTMLElement) {
+    const featureList = card.children[0].children[0].children[3];
+    const link = card.children[0].children[0].children[6];
+    let githubButton;
+    if (lightDarkModeSwitch.checked) {
+      githubButton = card.children[0].children[0].children[5];
+    } else {
+      githubButton = card.children[0].children[0].children[4];
+    }
+    return [featureList, link, githubButton];
+  }
+
+  function closeCard(card: HTMLElement) {
+    const [featureList, link, githubButton] = getCardComponents(card);
+
+    card.classList.remove("enlarge");
+    card.classList.add("minimized");
+    featureList.classList.remove("show");
+    githubButton.classList.add("hide");
+    githubButton.classList.remove("show");
+    if (link) {
+      link.classList.remove("show");
+      link.classList.add("hide");
+    }
+  }
+
+  function closeAlreadyOpenCards(e) {
+    for (let card of projectCards) {
+      if (card.classList.contains("enlarge") && card !== e.currentTarget) {
+        closeCard(card as HTMLElement);
+      }
+    }
+  }
+
+  function openCard(card: HTMLElement) {
+    const [featureList, link, githubButton] = getCardComponents(card);
+
+    card.classList.add("enlarge");
+    card.classList.remove("minimized");
+    featureList.classList.add("show");
+    githubButton.classList.remove("hide");
+    githubButton.classList.add("show");
+    if (link) {
+      link.classList.remove("hide");
+      link.classList.add("show");
+    }
+  }
 
   function expandAndContractCard(e) {
-    const lightSwitch = document.getElementById("switch") as HTMLInputElement;
-    let githubButton;
-    if (lightSwitch.checked) {
-      githubButton = e.currentTarget.children[0].children[0].children[5];
-    } else {
-      githubButton = e.currentTarget.children[0].children[0].children[4];
-    }
-    const featureList = e.currentTarget.children[0].children[0].children[3];
-    const link = e.currentTarget.children[0].children[0].children[6]
-      ? e.currentTarget.children[0].children[0].children[6]
-      : null;
-
+    closeAlreadyOpenCards(e);
     if (e.currentTarget.classList.contains("enlarge")) {
-      e.currentTarget.classList.remove("enlarge");
-      e.currentTarget.classList.add("minimized");
-      featureList.classList.remove("show");
-      githubButton.classList.add("hide");
-      githubButton.classList.remove("show");
-      if (link) {
-        link.classList.remove("show");
-        link.classList.add("hide");
-      }
+      closeCard(e.currentTarget);
     } else {
-      e.currentTarget.classList.add("enlarge");
-      e.currentTarget.classList.remove("minimized");
-      featureList.classList.add("show");
-      githubButton.classList.remove("hide");
-      githubButton.classList.add("show");
-      if (link) {
-        link.classList.remove("hide");
-        link.classList.add("show");
-      }
+      openCard(e.currentTarget);
     }
   }
 </script>
