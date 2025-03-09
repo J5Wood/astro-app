@@ -3,8 +3,14 @@ import headshot from "../assets/bust.png";
 ---
 
 <section class="hero-component">
-  <div class="hero-image-wrapper">
-    <img class="hero-image" src={headshot.src} alt="Portrait of Jeremy Wood" />
+  <div class="animation-wrapper">
+    <div class="hero-image-wrapper">
+      <img
+        class="hero-image"
+        src={headshot.src}
+        alt="Portrait of Jeremy Wood"
+      />
+    </div>
   </div>
   <div class="arrow-container">
     <div class="arrow-wrapper">
@@ -26,16 +32,30 @@ import headshot from "../assets/bust.png";
     width: 100vw;
   }
 
+  .animation-wrapper {
+    /* max-width: 75%;
+    max-height: 75%; */
+    width: 75%;
+    height: 75%;
+    transform: translateX(300%) rotate(180deg);
+    animation: rollin 2s forwards 0.8s;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* aspect-ratio: 1 / 1; */
+  }
+
   .hero-image-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 75%;
-    max-height: 75%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 50%;
-    transform: translateX(300%) rotate(180deg);
-    animation: rollin 2s forwards 0.8s;
-    visibility: hidden;
+    /* transform: translateX(300%) rotate(180deg);
+    animation: rollin 2s forwards 0.8s; */
+    /* visibility: hidden; */
     aspect-ratio: 1 / 1;
     background: radial-gradient(
       ellipse farthest-corner at 0% 0%,
@@ -133,14 +153,33 @@ import headshot from "../assets/bust.png";
   }
 
   @media (max-height: 450px) {
-    .hero-image-wrapper {
+    .animation-wrapper {
       max-height: 70%;
     }
   }
 
   @media (max-height: 420px) {
-    .hero-image-wrapper {
+    .animation-wrapper {
       max-height: 60%;
     }
   }
+
+  .hide {
+    /* transform: translateX(-9999px); */
+  }
 </style>
+<script>
+  const heroComponent = document.querySelector(".hero-component");
+  const heroImage = document.querySelector(".hero-image-wrapper");
+
+  function dragHero(ev) {
+    console.log("EV:", ev);
+    heroImage.classList.add("hide");
+    // ev.target.classList.add("hide");
+  }
+
+  heroImage.addEventListener("dragstart", (ev) => dragHero(ev));
+  // drag event on whole element
+
+  // drop event covering whole page?
+</script>
