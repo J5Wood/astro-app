@@ -2,8 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
-import AboutMe from "../components/AboutMe.astro";
-import Projects from "../components/Projects.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -12,8 +10,6 @@ import Footer from "../components/Footer.astro";
   <main>
     <Nav />
     <Hero />
-    <AboutMe />
-    <Projects />
     <Contact />
     <Footer />
   </main>
@@ -22,6 +18,6 @@ import Footer from "../components/Footer.astro";
 <style>
   main {
     display: grid;
-    grid-template: auto auto auto auto auto auto / 1fr;
+    grid-template: auto auto auto auto / 1fr;
   }
 </style>

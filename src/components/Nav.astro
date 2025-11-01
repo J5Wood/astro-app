@@ -1,36 +1,10 @@
 ---
-import resume from "../assets/resume.pdf";
 import blackBulb from "../assets/black-bulb.png";
 import whiteBulb from "../assets/white-bulb.png";
 ---
 
 <nav class="nav">
   <h1>Jeremy Wood</h1>
-  <span class="nav-links">
-    <div class="nav-link-wrapper">
-      <a class="nav-link" href="#about-section">About Me</a>
-    </div>
-    <div class="nav-link-wrapper">
-      <a class="nav-link" href="#project-section">Projects</a>
-    </div>
-    <div class="nav-link-wrapper">
-      <a class="nav-link" href="#contact-section">Contact</a>
-    </div>
-    <div class="nav-link-wrapper">
-      <a
-        class="nav-link"
-        href={resume}
-        target="_blank"
-        download="jeremy/wood/resume"
-        aria-label="Download Resume">Resume</a
-      >
-    </div>
-  </span>
-  <div class="animation-container">
-    <hr class="animated-1" />
-    <hr class="animated-2" />
-    <hr class="animated-3" />
-  </div>
   <div class="toggle-button-wrapper">
     <input type="checkbox" id="switch" />
     <label for="switch">
@@ -38,11 +12,16 @@ import whiteBulb from "../assets/white-bulb.png";
       <img class="switch-bulb" src={blackBulb.src} alt="Light mode switch." />
     </label>
   </div>
+  <div class="animation-container">
+    <hr class="animated-1" />
+    <hr class="animated-2" />
+    <hr class="animated-3" />
+  </div>
 </nav>
 <style>
   .nav {
     display: grid;
-    grid-template: auto 2em auto / 1fr auto auto;
+    grid-template: auto auto / 1fr 1fr 1fr;
     padding-top: 1em;
     justify-items: center;
     align-items: center;
@@ -52,6 +31,7 @@ import whiteBulb from "../assets/white-bulb.png";
   }
 
   .nav h1 {
+    grid-column: 2 / 3;
     display: inline;
     display: flex;
     justify-content: center;
@@ -62,56 +42,67 @@ import whiteBulb from "../assets/white-bulb.png";
     font-size: 3em;
   }
 
-  .nav-links {
-    display: grid;
-    grid-template: auto / 1fr 1fr 1fr 1fr;
-    align-items: center;
-    text-align: center;
-    gap: 1em;
-    grid-column: 4 / 5;
-    padding: 0 5px;
-  }
-
-  .nav-link-wrapper {
+  .toggle-button-wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-radius: 2em;
-    background: radial-gradient(
-      circle farthest-corner at 0% 0%,
-      rgba(169, 87, 241, 1) 0%,
-      rgba(0, 236, 181, 0.5) 75%,
-      rgba(16, 0, 236, 0.5) 100%
-    );
-    padding: 0.1em;
-    transition: all 0.1s ease-in;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    justify-self: end;
+    padding-right: 0.5em;
   }
 
-  .nav-link-wrapper:hover {
-    transform: translate(-1px, -1px);
-    background: radial-gradient(
-      circle farthest-corner at 0% 0%,
-      rgba(169, 87, 241, 1) 0%,
-      rgba(0, 236, 181, 1) 75%,
-      rgba(16, 0, 236, 1) 100%
-    );
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
   }
 
-  .nav-link {
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: var(--main-text);
-    background: var(--main-background);
-    border-radius: 2em;
-    white-space: nowrap;
+  label {
     cursor: pointer;
-    padding: 0.2em;
+    width: 50px;
+    height: 25px;
+    background: rgb(var(--main-green));
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    align-items: center;
+    justify-items: center;
   }
 
-  #held-button {
-    background-color: rgb(var(--main-highlight));
-    color: var(--main-background);
+  label:after {
+    content: "";
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    background: var(--main-background);
+    border-radius: 90px;
+    transition: all 0.3s ease-out;
+  }
+
+  input:checked + label {
+    background: rgb(var(--main-blue));
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 2.5px);
+    transform: translateX(-100%);
+    background: var(--main-background);
+  }
+
+  label:active:after {
+    width: 45px;
+  }
+
+  .switch-bulb {
+    height: 75%;
+    width: 75%;
   }
 
   hr {
@@ -122,8 +113,7 @@ import whiteBulb from "../assets/white-bulb.png";
   }
 
   .animation-container {
-    align-self: start;
-    padding-top: 0.5em;
+    grid-column-start: 1;
   }
 
   hr.animated-1 {
@@ -229,69 +219,6 @@ import whiteBulb from "../assets/white-bulb.png";
     100% {
       width: 81%;
     }
-  }
-
-  .toggle-button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: fit-content;
-    grid-row: 3 / 4;
-    grid-column: 4 / 5;
-    justify-self: end;
-    padding-right: 0.5em;
-  }
-
-  input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-  }
-
-  label {
-    cursor: pointer;
-    width: 50px;
-    height: 25px;
-    background: rgb(var(--main-green));
-    display: block;
-    border-radius: 100px;
-    position: relative;
-    display: grid;
-    grid-template: auto / 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-  }
-
-  label:after {
-    content: "";
-    position: absolute;
-    top: 2.5px;
-    left: 2.5px;
-    width: 20px;
-    height: 20px;
-    background: var(--main-background);
-    border-radius: 90px;
-    transition: all 0.3s ease-out;
-  }
-
-  input:checked + label {
-    background: rgb(var(--main-blue));
-  }
-
-  input:checked + label:after {
-    left: calc(100% - 2.5px);
-    transform: translateX(-100%);
-    background: var(--main-background);
-  }
-
-  label:active:after {
-    width: 45px;
-  }
-
-  .switch-bulb {
-    height: 75%;
-    width: 75%;
   }
 
   @media (max-width: 520px) {
